@@ -9,13 +9,12 @@ import {
 } from "react-router-dom";
 
 // pages and layout
-import RootLayout from "../pages/Layout/RootLayout";
-import Home from "../pages/Home/Home";
-import Login from "../pages/Login/Login";
-import Signup from "../pages/Signup/Signup";
+import RootLayout from "./pages/Layout/RootLayout";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
 
 // components
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
