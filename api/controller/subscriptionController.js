@@ -1,6 +1,6 @@
 import categoryModel from "../models/categoryModel.js";
 import subscriptionModel from "../models/subscriptionModel.js";
-import createError from "../utils/createError.js";
+import { createError } from "../utils/createError.js";
 
 export const getAllSub = async (req, res, next) => {
   console.log("Get all subscriptions...");

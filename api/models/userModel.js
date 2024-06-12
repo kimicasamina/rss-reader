@@ -13,22 +13,14 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, "Password is required"],
   },
   subscription: [
     {
       type: mongoose.Types.ObjectId,
       ref: "subscription",
-      // required: true
     },
   ],
-  category: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "category",
-      // required: true
-    },
-  ],
+  category: [String],
 });
 
 // const userModel = userConnection.model('user', userSchema)
