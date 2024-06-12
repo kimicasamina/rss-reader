@@ -82,8 +82,12 @@ const articles = [
   },
 ];
 
+import { RestartIcon } from "../../assets/icons";
 import Article from "../../components/Article/Article";
+import useFetch from "../../hooks/useFetch";
 export default function Home() {
+  const [data, isLoading, error] = useFetch(`https://news.ycombinator.com/rss`);
+  console.log(data);
   console.log("articles", articles);
   return (
     <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen pt-14 px-4 tablet:mt-0 tablet:px-8 tablet:pt-0 ">
@@ -91,7 +95,7 @@ export default function Home() {
         <div className="flex flex-col gap-y-2">
           <div className="flex items-center gap-x-2">
             <h1 className="text-black ">Home</h1>
-            <AddIcon className={``} />
+            <RestartIcon className={``} />
           </div>
           <p className="text-sm w-full opacity-70">Latest from your feeds.</p>
         </div>

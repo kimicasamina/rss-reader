@@ -7,7 +7,7 @@ import Feed from "../Feed/Feed";
 
 export default function Sidebar({ displayMobileNav, setDisplayMobileNav }) {
   return (
-    <div className="hidden tablet:flex w-full max-w-screen-mobile flex-col px-2 pt-4 pb-2 tablet:bg-tertiary">
+    <div className="hidden tablet:flex w-full tablet:max-w-[300px] flex-col px-2 pt-4 pb-2 tablet:bg-tertiary">
       <div
         className={` w-full flex justify-between items-center h-8 py-4 ${displayMobileNav ? "mb-4" : "mb-2"}`}
       >

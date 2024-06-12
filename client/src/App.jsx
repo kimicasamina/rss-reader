@@ -8,6 +8,8 @@ import {
   Route,
 } from "react-router-dom";
 
+import { Provider } from "react-redux";
+
 // pages and layout
 import RootLayout from "./pages/Layout/RootLayout";
 import Home from "./pages/Home/Home";

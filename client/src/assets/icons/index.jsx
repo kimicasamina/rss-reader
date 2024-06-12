@@ -249,3 +249,83 @@ export const TwitterIcon = ({ fill, className }) => {
     </svg>
   );
 };
+
+export const RestartIcon = ({ fill, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill={fill || "white"}
+      class={className || "size-6"}
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+      />
+    </svg>
+  );
+};
+
+export const ShareIcon = ({ fill, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill={fill || "none"}
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class={className || "size-6"}
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"
+      />
+    </svg>
+  );
+};
+export const BookmarkIcon = ({ fill, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill={fill || "none"}
+      class={className || "size-6"}
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+      />
+    </svg>
+  );
+};
+
+export const TagIcon = ({ fill, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill={fill || "none"}
+      class={className || "size-6"}
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"
+      />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6 6h.008v.008H6V6Z"
+      />
+    </svg>
+  );
+};
