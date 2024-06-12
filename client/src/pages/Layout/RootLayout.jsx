@@ -9,6 +9,7 @@ import MobileNav from "../../components/Nav/Mobile/MobileNav";
 
 export default function RootLayout() {
   const [displayMobileNav, setDisplayMobileNav] = useState(false);
+
   return (
     <div className="flex-col tablet:flex-row flex w-full max-w-screen-desktop mx-auto h-screen relative ">
       <MobileNav

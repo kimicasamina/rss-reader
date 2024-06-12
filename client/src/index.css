@@ -45,11 +45,11 @@
     @apply text-secondary font-semibold;
   }
   h1 {
-    @apply text-2xl text-gray-80;
+    @apply text-xl tablet:text-2xl text-gray-80;
   }
 
   h2 {
-    @apply text-xl text-gray-80;
+    @apply text-lg tablet:text-xl text-gray-80;
   }
 
   p {

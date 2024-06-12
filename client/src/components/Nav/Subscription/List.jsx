@@ -33,7 +33,7 @@ export default function List() {
       {list && list.length > 0
         ? list.map((item, index) => {
             return (
-              <div className="flex items-center">
+              <div className="flex items-center" key={index}>
                 <Link
                   className={"w-full flex items-center gap-x-2 cursor-pointer "}
                 >

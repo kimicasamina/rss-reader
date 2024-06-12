@@ -21,6 +21,16 @@ export default function Menu({ menuHidden }) {
           </p>
         </div>
         <div className="flex items-center gap-x-2 py-1 cursor-pointer hover-bg-menu group ">
+          <HomeIcon
+            className={
+              "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "
+            }
+          />
+          <p className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200">
+            Favorites
+          </p>
+        </div>
+        <div className="flex items-center gap-x-2 py-1 cursor-pointer hover-bg-menu group ">
           <SettingsIcon
             className={
               "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "

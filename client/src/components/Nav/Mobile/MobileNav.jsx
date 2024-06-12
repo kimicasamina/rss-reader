@@ -8,7 +8,7 @@ import Feed from "../Feed/Feed";
 export default function MobileNav({ displayMobileNav, setDisplayMobileNav }) {
   return (
     <div
-      className={`absolute w-full bg-tertiary tablet:hidden px-2 py-2 flex flex-col ${displayMobileNav ? "h-full bg-tertiary" : "pb-0"}`}
+      className={`absolute z-10 w-full bg-tertiary tablet:hidden px-2 py-2 flex flex-col ${displayMobileNav ? "h-full bg-tertiary" : "pb-0"}`}
     >
       <div
         className={` w-full flex justify-between items-center h-8 py-4 ${displayMobileNav ? "mb-4" : "mb-2"}`}
