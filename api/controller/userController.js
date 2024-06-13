@@ -44,7 +44,7 @@ export const login = async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
-    let user = await userModel.findOne({ email });
+    let user = await userModel.findOne({ email }).select("-password");
 
     // check if user exist
     if (!user) {
@@ -66,17 +66,12 @@ export const login = async (req, res, next) => {
       }
     );
 
-    const userInfo = {
-      _id: user._id,
-      username: user.username,
-      email: user.email,
-    };
-
     res.cookie("access_token", token, {
       httpOnly: true,
       expiresIn: "15m",
     });
-    res.status(201).json({ user: userInfo, success: true });
+
+    res.status(201).json({ user, success: true });
   } catch (err) {
     console.log(err);
     return next(createError(401, "Login Failed"));
@@ -109,6 +104,7 @@ export const getUser = async (req, res, next) => {
 
 export const updateCategory = async (req, res, next) => {
   let userId = req.params.id;
+  const category = req.body;
 
   try {
     const user = await userModel.findById(userId);

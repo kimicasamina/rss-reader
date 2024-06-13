@@ -3,7 +3,7 @@ import React from "react";
 import { AddFolderIcon, EditIcon } from "../../../assets/icons";
 
 import FeedMenu from "./FeedMenu";
-import List from "../Subscription/List";
+import List from "./Subscription/List";
 
 export default function Feed() {
   return (
