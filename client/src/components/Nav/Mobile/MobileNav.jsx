@@ -4,6 +4,7 @@ import { UserIcon, MenuIcon } from "../../../assets/icons";
 
 import Menu from "../Menu/Menu";
 import Feed from "../Feed/Feed";
+import User from "../User/User";
 
 export default function MobileNav({ displayMobileNav, setDisplayMobileNav }) {
   return (
@@ -13,12 +14,7 @@ export default function MobileNav({ displayMobileNav, setDisplayMobileNav }) {
       <div
         className={` w-full flex justify-between items-center h-8 py-4 ${displayMobileNav ? "mb-4" : "mb-2"}`}
       >
-        <div className="flex items-center gap-x-2">
-          <UserIcon
-            className={"hover:animation-ease-in-out h-6 cursor-pointer "}
-          />
-          <h2 className="text-secondary">Kimi</h2>
-        </div>
+        <h1 className="">Maruya</h1>
         <button
           className=""
           onClick={(e) => setDisplayMobileNav((prev) => !prev)}
@@ -32,6 +28,7 @@ export default function MobileNav({ displayMobileNav, setDisplayMobileNav }) {
       </div>
       {displayMobileNav ? (
         <div className="flex flex-col flex-1">
+          <User />
           <Menu />
           <Feed />
         </div>

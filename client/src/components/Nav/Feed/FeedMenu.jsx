@@ -5,7 +5,7 @@ import { AddIcon, SearchIcon } from "../../../assets/icons";
 export default function FeedMenu() {
   return (
     <>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-2">
         <h2 className="text-secondary">Feeds</h2>
         <AddIcon
           className={
@@ -14,7 +14,7 @@ export default function FeedMenu() {
         />
       </div>
       {/* ---- FEED MENU SEARCH INPUT ---- */}
-      <div className="relative flex bg-transparent mb-4">
+      <div className="relative flex bg-transparent mb-2">
         <div className="flex w-full items-center border-b gap-x-2 py-1">
           <SearchIcon
             className={"hover:animation-ease-in-out h-5 cursor-pointer "}

@@ -1,226 +1,226 @@
 import React from "react";
 
-export const HomeIcon = ({ fill, className }) => {
+const HomeIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
       />
     </svg>
   );
 };
 
-export const MenuIcon = ({ fill, className }) => {
+const MenuIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
       />
     </svg>
   );
 };
 
-export const EditIcon = ({ fill, className }) => {
+const EditIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
       />
     </svg>
   );
 };
 
-export const UserIcon = ({ fill, className }) => {
+const UserIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
       />
     </svg>
   );
 };
 
-export const LogoutIcon = ({ fill, className }) => {
+const LogoutIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
       />
     </svg>
   );
 };
 
-export const LoginIcon = ({ fill, className }) => {
+const LoginIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
       />
     </svg>
   );
 };
 
-export const SettingsIcon = ({ fill, className }) => {
+const SettingsIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"
       />
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
       />
     </svg>
   );
 };
 
-export const SearchIcon = ({ fill, className }) => {
+const SearchIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
       />
     </svg>
   );
 };
 
-export const AddFolderIcon = ({ fill, className }) => {
+const AddFolderIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"
       />
     </svg>
   );
 };
 
-export const AddIcon = ({ fill, className }) => {
+const AddIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M12 4.5v15m7.5-7.5h-15"
       />
     </svg>
   );
 };
 
-export const FolderIcon = ({ fill, className }) => {
+const FolderIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill={fill || "none"}
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"
       />
     </svg>
   );
 };
 
-export const FacebookIcon = ({ fill, className }) => {
+const FacebookIcon = ({ fill, className }) => {
   return (
     <svg
       width="21"
       height="21"
       fill={fill || "white"}
-      class={className || "size-6"}
+      className={className || "size-6"}
       viewBox="0 0 21 21"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -232,13 +232,13 @@ export const FacebookIcon = ({ fill, className }) => {
   );
 };
 
-export const TwitterIcon = ({ fill, className }) => {
+const TwitterIcon = ({ fill, className }) => {
   return (
     <svg
       width="23"
       height="19"
       fill={fill || "white"}
-      class={className || null}
+      className={className || null}
       viewBox="0 0 23 19"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -250,125 +250,147 @@ export const TwitterIcon = ({ fill, className }) => {
   );
 };
 
-export const RestartIcon = ({ fill, className }) => {
+const RestartIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill={fill || "white"}
-      class={className || "size-6"}
+      className={className || "size-6"}
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
       />
     </svg>
   );
 };
 
-export const ShareIcon = ({ fill, className }) => {
+const ShareIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill={fill || "none"}
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
       class={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"
       />
     </svg>
   );
 };
-export const BookmarkIcon = ({ fill, className }) => {
+const BookmarkIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill={fill || "none"}
-      class={className || "size-6"}
+      className={className || "size-6"}
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
       />
     </svg>
   );
 };
 
-export const TagIcon = ({ fill, className }) => {
+const TagIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill={fill || "none"}
-      class={className || "size-6"}
+      className={className || "size-6"}
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"
       />
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M6 6h.008v.008H6V6Z"
       />
     </svg>
   );
 };
 
-export const EyeIcon = ({ fill, className }) => {
+const EyeIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
       fill={fill || "none"}
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
       />
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
       />
     </svg>
   );
 };
 
-export const EyeSlashIcon = ({ fill, className }) => {
+const EyeSlashIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
       fill={fill || "none"}
-      class={className || "size-6"}
+      className={className || "size-6"}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"
       />
     </svg>
   );
+};
+
+export {
+  HomeIcon,
+  MenuIcon,
+  EditIcon,
+  UserIcon,
+  LogoutIcon,
+  LoginIcon,
+  SettingsIcon,
+  SearchIcon,
+  AddFolderIcon,
+  AddIcon,
+  FolderIcon,
+  FacebookIcon,
+  TwitterIcon,
+  RestartIcon,
+  ShareIcon,
+  BookmarkIcon,
+  TagIcon,
+  EyeIcon,
+  EyeSlashIcon,
 };

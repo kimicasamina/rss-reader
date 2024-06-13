@@ -5,18 +5,15 @@ import { UserIcon, MenuIcon } from "../../../assets/icons";
 import Menu from "../Menu/Menu";
 import Feed from "../Feed/Feed";
 
+import User from "../User/User";
+
 export default function Sidebar({ displayMobileNav, setDisplayMobileNav }) {
   return (
     <div className="hidden tablet:flex w-full tablet:max-w-[300px] flex-col px-2 pt-4 pb-2 tablet:bg-tertiary">
       <div
-        className={` w-full flex justify-between items-center h-8 py-4 ${displayMobileNav ? "mb-4" : "mb-2"}`}
+        className={`w-full flex justify-between items-center h-8 py-4 ${displayMobileNav ? "mb-4" : "mb-4"}`}
       >
-        <div className="flex items-center gap-x-2">
-          <UserIcon
-            className={"hover:animation-ease-in-out h-6 cursor-pointer "}
-          />
-          <h2 className="text-secondary">Kimi</h2>
-        </div>
+        <h1 className="">Maruya</h1>
         <button
           className=""
           onClick={(e) => setDisplayMobileNav((prev) => !prev)}
@@ -28,6 +25,7 @@ export default function Sidebar({ displayMobileNav, setDisplayMobileNav }) {
           />
         </button>
       </div>
+      <User />
       <Menu />
       <Feed />
     </div>

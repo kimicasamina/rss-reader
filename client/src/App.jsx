@@ -15,16 +15,12 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 
+// hooks
+import { ProvideAuth } from "./hooks/useAuth";
+
 // components
 const router = createBrowserRouter(
   createRoutesFromElements(
-    // <Route path="/" element={<RootLayout />}>
-    //   <ProtectedRoute element={<ProtectedRoute />}>
-    //     <Route path="/" element={<Home />} />
-    //   </ProtectedRoute>
-    //   <Route path="/login" element={<Login />} />
-    //   <Route path="/signup" element={<Signup />} />
-    // </Route>
     <Route path="/" element={<RootLayout />}>
       <Route element={<ProtectedRoutes />}>
         <Route path="/" element={<Home />} />
@@ -35,5 +31,9 @@ const router = createBrowserRouter(
   )
 );
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ProvideAuth>
+      <RouterProvider router={router} />
+    </ProvideAuth>
+  );
 }

@@ -5,11 +5,14 @@ import { createError } from "../utils/createError.js";
 
 export const getAllUsers = async (req, res, next) => {
   try {
-    const users = await userModel.find({});
-    return res.status(200).json({ success: true, users });
-  } catch (error) {
-    console.log(error);
-    return next(createError(500, "Failed to retrieve users data"));
+    const users = await userModel.find({}).select("-password");
+    return res.status(200).json({ status: "ok", users });
+  } catch (err) {
+    console.log(err);
+    // throw createError(500, "Failed to retrieve users data");
+    return res
+      .status(err.statusCode)
+      .json({ status: "error", message: err.message });
   }
 };
 
@@ -21,10 +24,14 @@ export const signup = async (req, res, next) => {
   try {
     existingUser = await userModel.findOne({ email });
   } catch (error) {
-    return next(createError(500, "Registration failed"));
+    // return createError(err.status, err.message);
+    return res.status(err.statusCode).json(error.message);
   }
   if (existingUser) {
-    return next(createError(401, "User already exist! Login Instead"));
+    // return createError(401, "User already exist! Login Instead");
+    return res
+      .status(401)
+      .json({ status: "error", message: "User already exist! Login instead." });
   }
 
   // create new user
@@ -37,24 +44,32 @@ export const signup = async (req, res, next) => {
 
   return res
     .status(201)
-    .json({ message: "User registered successfully", success: true });
+    .json({ message: "User registered successfully", status: "ok" });
 };
 
 export const login = async (req, res, next) => {
   const { email, password } = req.body;
-
+  console.log("email, password", password);
   try {
-    let user = await userModel.findOne({ email }).select("-password");
+    let user = await userModel.findOne({ email });
 
     // check if user exist
     if (!user) {
-      return next(createError(401, "User already exist! Login Instead"));
+      // return createError(401, "User already exist! Login Instead");
+      return res.status(401).json({
+        status: "error",
+        message: "User already exist! Login instead.",
+      });
     }
 
     // check if password is correct
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      return next(createError(401, "Incorrect password"));
+      console.log("password do not match");
+      // return createError(401, "Incorrect password");
+      return res
+        .status(401)
+        .json({ status: "error", message: "Password do not match." });
     }
 
     // create token
@@ -71,10 +86,22 @@ export const login = async (req, res, next) => {
       expiresIn: "15m",
     });
 
-    res.status(201).json({ user, success: true });
+    const userDetails = {
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      subscription: user.subscription,
+      category: user.category,
+    };
+
+    return res.status(201).json({ status: "ok", user: userDetails });
   } catch (err) {
-    console.log(err);
-    return next(createError(401, "Login Failed"));
+    // console.log("err", err);
+    console.log("err", err);
+    // return createError(err.status, err.message);
+    return res
+      .status(err.statusCode)
+      .json({ status: "error", message: err.message });
   }
 };
 
@@ -83,10 +110,13 @@ export const logout = async (req, res, next) => {
   console.log("DELETE TOKEN", token);
   try {
     res.clearCookie("access_token");
-    res.json({ success: true, message: "You are logged out." });
+    res.json({ status: "ok", message: "You are logged out." });
   } catch (err) {
     console.log(err);
-    return next(createError(500, "Logout failed"));
+    // return next(createError(500, "Logout failed"));
+    return res
+      .status(err.statusCode)
+      .json({ status: "error", message: err.message });
   }
 };
 
@@ -95,10 +125,12 @@ export const getUser = async (req, res, next) => {
   console.log("REQ USER_ID", user);
   try {
     const userInfo = await userModel.findById(user.id).select("-password");
-    return res.status(200).json({ success: true, user: userInfo });
+    return res.status(200).json({ user: userInfo });
   } catch (err) {
     console.log(err);
-    return next(createError(401, "User not found"));
+    return res
+      .status(err.statusCode)
+      .json({ status: "error", message: err.message });
   }
 };
 
@@ -108,9 +140,11 @@ export const updateCategory = async (req, res, next) => {
 
   try {
     const user = await userModel.findById(userId);
-    return res.status(200).json({ success: true, user: userInfo });
+    return res.status(200).json({ status: "ok", user: userInfo });
   } catch (err) {
     console.log(err);
-    return next(createError(401, "User not found"));
+    return res
+      .status(err.statusCode)
+      .json({ status: "error", message: err.message });
   }
 };

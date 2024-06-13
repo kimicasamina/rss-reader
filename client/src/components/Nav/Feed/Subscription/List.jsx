@@ -33,14 +33,17 @@ export default function List() {
       {list && list.length > 0
         ? list.map((item, index) => {
             return (
-              <div className="flex items-center" key={index}>
-                <Link
-                  className={"w-full flex items-center gap-x-2 cursor-pointer "}
-                >
-                  <span className="w-5 h-5 rounded-full bg-primary"></span>
-                  <p className="hover:text-gray-50">{item.name}</p>
-                </Link>
-              </div>
+              // <div className="flex items-center py-1" key={index}>
+              // </div>
+              <Link
+                className={
+                  "w-full flex items-center gap-x-2 cursor-pointer py-1"
+                }
+                key={index}
+              >
+                <span className="w-5 h-5 rounded-full bg-primary"></span>
+                <p className="hover:text-gray-50">{item.name}</p>
+              </Link>
             );
           })
         : null}

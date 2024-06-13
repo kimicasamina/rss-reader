@@ -17,7 +17,7 @@
     --transparent: #00000000;
     --primary: #ff5454;
     --secondary: #333333;
-    --tertiary: #fafafa;
+    --tertiary: #291f1f;
     --black: #000000;
     --white: #ffffff;
     --gray-80: #333333;
@@ -80,5 +80,9 @@
 
   .animation-ease-in-out {
     @apply duration-200 delay-100 ease-in-out;
+  }
+
+  .absolute-center {
+    @apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
   }
 }
