@@ -12,28 +12,31 @@ import {
 import RootLayout from "./pages/Layout/RootLayout";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
+import Login from "./components/Login/Login";
 import Signup from "./pages/Signup/Signup";
 
 // hooks
-import { ProvideAuth } from "./hooks/useAuth";
+import { AuthContextProvider } from "./context/useAuth";
+import { UiContextProvider } from "./context/useUi";
 
 // components
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route element={<ProtectedRoutes />}>
-        <Route path="/" element={<Home />} />
-      </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      <Route path="/" element={<Home />} />
+      {/* <Route element={<ProtectedRoutes />}>
+      </Route> */}
+      {/* <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} /> */}
     </Route>
   )
 );
 export default function App() {
   return (
-    <ProvideAuth>
-      <RouterProvider router={router} />
-    </ProvideAuth>
+    <UiContextProvider>
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+      </AuthContextProvider>
+    </UiContextProvider>
   );
 }

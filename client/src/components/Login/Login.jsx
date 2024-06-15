@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../context/useAuth";
 
 import { EyeIcon, EyeSlashIcon } from "../../assets/icons";
 import { FacebookIcon, TwitterIcon } from "../../assets/icons";
 import tailwindConfig from "../../../tailwind.config";
+import { useUi } from "../../context/useUi";
 
 export default function Login() {
   const { user, setUser, setIsLoading, setError } = useAuth();
-  console.log(user);
+  const { showLogin, setShowLogin } = useUi();
   const navigate = useNavigate();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -30,8 +31,23 @@ export default function Login() {
   };
 
   return (
-    <div className="bg-white w-full h-full place-center">
-      <div className="p-8 rounded-md shadow-md shadow-gray-50 border flex flex-col gap-y-8 w-full tablet:max-w-[520px] mx-auto px-8">
+    <div
+      className="bg-tertiary flex tablet:place-center absolute absolute-center w-full h-full tablet:h-auto tablet:max-w-[520px] mx-auto z-10"
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
+      <div className="p-8 rounded-md tablet:shadow-md shadow-gray-50 flex flex-col gap-y-8 w-full tablet:max-w-[520px] mx-auto">
+        <button
+          className="w-6 h-6 self-end"
+          onClick={(e) => {
+            // e.stopPropagation();
+            console.log("click");
+            setShowLogin(false);
+          }}
+        >
+          <EyeIcon />
+        </button>
         <form
           action=""
           className="w-full flex flex-col gap-y-4 "

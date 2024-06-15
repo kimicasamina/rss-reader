@@ -9,10 +9,12 @@ import { LogoutIcon } from "../../../assets/icons";
 import { LoginIcon } from "../../../assets/icons";
 import { BookmarkIcon } from "../../../assets/icons";
 import { TagIcon } from "../../../assets/icons";
-import { useAuth } from "../../../hooks/useAuth";
+import { useAuth } from "../../../context/useAuth";
+import { useUi } from "../../../context/useUi";
 
 export default function Menu({ menuHidden }) {
   const { user, logoutUser } = useAuth();
+  const { showLogin, setShowLogin } = useUi();
   return (
     <div className="">
       {/* ---- SIDEBAR MENU ----- */}
@@ -73,7 +75,13 @@ export default function Menu({ menuHidden }) {
               </p>
             </button>
           ) : (
-            <button className="w-full flex gap-x-2 ,b-">
+            <button
+              className="w-full flex gap-x-2 "
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowLogin(true);
+              }}
+            >
               <LoginIcon
                 className={
                   "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "
