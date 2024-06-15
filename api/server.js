@@ -49,7 +49,7 @@ app.use("/api/category", categoryRoute);
 app.use("/api/subscription", subscriptionRoute);
 app.use(ErrorHandler);
 
-app.listen(process.env.PORT || 4000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("SERVER STARTS AT:", process.env.PORT);
   console.log("NODE_ENV:", process.env.NODE_ENV);
 });

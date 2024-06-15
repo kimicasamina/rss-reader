@@ -17,7 +17,7 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const signup = async (req, res, next) => {
-  const { username, email, password, confirmPassword } = req.body;
+  const { username, email, password } = req.body;
   let existingUser;
 
   // check if user already exists
