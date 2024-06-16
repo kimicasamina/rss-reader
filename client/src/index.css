@@ -30,7 +30,7 @@
     margin: 0;
     line-height: 1.5;
     min-height: 100vh;
-    @apply w-full max-w-screen-desktop mx-auto;
+    /* @apply w-full max-w-screen-desktop mx-auto; */
     @apply font-rubik;
   }
 

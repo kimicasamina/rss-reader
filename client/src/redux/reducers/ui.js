@@ -1,18 +1,31 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialValue = {
-  isMenuHidden: false,
+  modal: {
+    isVisible: false,
+    content: "login",
+  },
 };
 
-const uiReducer = (ui = initialValue, action) => {
-  switch (action.type) {
-    case "SET_ISMENUHIDDEN": {
-      return {
-        ...ui,
-        isMenuHidden: !ui.isMenuHidden,
+const uiSlice = createSlice({
+  name: "ui",
+  initialState: initialValue,
+  reducers: {
+    setModal(state, action) {
+      // state.loginVisible = action.payload;
+      state.modal = {
+        isVisible: action.payload.isVisible,
+        content: action.payload.content,
       };
-    }
+    },
+    closeModal(state, action) {
+      state.modal = {
+        ...state,
+        isVisible: false,
+      };
+    },
+  },
+});
 
-    default:
-      return ui;
-  }
-};
-export default uiReducer;
+export const { setModal, closeModal } = uiSlice.actions;
+export default uiSlice.reducer;

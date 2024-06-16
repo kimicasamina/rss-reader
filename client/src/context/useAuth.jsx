@@ -6,17 +6,26 @@ const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState(null);
 
   console.log("user:", user);
 
-  const logoutUser = () => {
+  const logoutUser = async () => {
+    try {
+      const { data } = await axios.delete("/user/logout");
+      console.log(data);
+      alert(data.message);
+    } catch (err) {
+      console.log(err);
+      alert(err.response.data.message);
+    }
     setUser(null);
     return <Navigate to="/login" />;
   };
 
   const loginUser = async (data) => {
     setUser(data);
+    setIsLoading(false);
     return <Navigate to="/" />;
   };
 
@@ -31,7 +40,7 @@ export function AuthContextProvider({ children }) {
           // setIsFetching(false);
         } catch (err) {
           console.log(err);
-          setError(err);
+          setErrors(err);
         } finally {
           setIsLoading(false);
         }
@@ -48,8 +57,8 @@ export function AuthContextProvider({ children }) {
         setUser,
         isLoading,
         setIsLoading,
-        error,
-        setError,
+        errors,
+        setErrors,
         loginUser,
         logoutUser,
       }}

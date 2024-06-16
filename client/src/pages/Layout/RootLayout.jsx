@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // rrd
 import { Outlet } from "react-router-dom";
@@ -6,25 +6,27 @@ import { Outlet } from "react-router-dom";
 // components
 import Sidebar from "../../components/Nav/Sidebar/Sidebar";
 import MobileNav from "../../components/Nav/Mobile/MobileNav";
-import { useUi } from "../../context/useUi";
 import Login from "../../components/Login/Login";
+import Signup from "../../components/Signup/Signup";
+
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal } from "../../redux/reducers/ui";
 
 export default function RootLayout() {
   const [displayMobileNav, setDisplayMobileNav] = useState(false);
-  const { showLogin, setShowLogin } = useUi();
-  console.log("showlogin:", showLogin);
+  const uiModal = useSelector((state) => state.ui.modal);
+  console.log("uiModal:", uiModal);
+  const dispatch = useDispatch();
 
   return (
     <div className="flex-col tablet:flex-row flex w-full max-w-screen-desktop mx-auto h-screen relative ">
-      {showLogin ? (
+      {uiModal.isVisible ? (
         <div
-          className="absolute h-screen w-full inset-0 bg-brand-gradient z-20"
-          onClick={(e) => {
-            e.stopPropagation();
-            setShowLogin(false);
-          }}
+          className="w-full h-full absolute flex tablet:place-center bg-tertiary/100 z-20 "
+          onClick={() => dispatch(closeModal())}
         >
-          <Login />
+          {uiModal.content === "login" ? <Login /> : <Signup />}
         </div>
       ) : null}
       <>
