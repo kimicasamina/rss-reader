@@ -12,6 +12,7 @@ import Signup from "../../components/Signup/Signup";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../redux/reducers/ui";
+import AddSub from "../../components/Form/AddSub";
 
 export default function RootLayout() {
   const [displayMobileNav, setDisplayMobileNav] = useState(false);
@@ -26,7 +27,9 @@ export default function RootLayout() {
           className="w-full h-full absolute flex tablet:place-center bg-tertiary/100 z-20 "
           onClick={() => dispatch(closeModal())}
         >
-          {uiModal.content === "login" ? <Login /> : <Signup />}
+          {uiModal.content === "login" ? <Login /> : null}
+          {uiModal.content === "signup" ? <Signup /> : null}
+          {uiModal.content === "addfeed" ? <AddSub /> : null}
         </div>
       ) : null}
       <>

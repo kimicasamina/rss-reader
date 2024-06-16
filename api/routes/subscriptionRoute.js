@@ -3,6 +3,6 @@ const router = express.Router();
 import { addSub, getAllSub } from "../controller/subscriptionController.js";
 
 router.get("/", getAllSub);
-router.post("/addsub", addSub);
+router.get("/addsub", addSub);
 
 export default router;

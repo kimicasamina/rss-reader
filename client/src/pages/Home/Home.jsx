@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { AddIcon } from "../../assets/icons";
 import { Discount, people03, robot, Send } from "../../assets/images";
@@ -82,37 +82,45 @@ const articles = [
   },
 ];
 
-import { RestartIcon } from "../../assets/icons";
 import Article from "../../components/Article/Article";
+import PageHeader from "../../components/Header/PageHeader";
 import useFetch from "../../hooks/useFetch";
+import useFetchRss from "../../hooks/useFetchRss";
+import { useState } from "react";
 export default function Home() {
-  const [data, isLoading, error] = useFetch(`https://news.ycombinator.com/rss`);
-  console.log(data);
-  console.log("articles", articles);
+  // const [data, isLoading, error] = useFetchRss(
+  //   `https://news.ycombinator.com/rss`
+  // );
+  // console.log(data);
+  // console.log("articles", articles);
+
+  const MAX_ARTICLES = 10;
+  const [articles, setArticles] = useState();
+  useEffect(() => {
+    const loadArticles = async () => {
+      fetch(
+        "https://api.rss2json.com/v1/api.json?rss_url=https://news.ycombinator.com/rss",
+        { headers: { Accept: "application/json", mode: "no-cors" } }
+      )
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
+    };
+    loadArticles();
+  }, [MAX_ARTICLES]);
   return (
-    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen pt-14 px-4 tablet:mt-0 tablet:px-8 tablet:pt-0 ">
-      <div className="flex w-full justify-between items-center my-4">
-        <div className="flex flex-col gap-y-2">
-          <div className="flex items-center gap-x-2">
-            <h1 className="text-black ">Home</h1>
-            <RestartIcon className={``} />
-          </div>
-          <p className="text-sm w-full opacity-70">Latest from your feeds.</p>
-        </div>
-        <button className="btn text-base bg-gray-80 text-tertiary flex items-center justify-evenly px-2 hover:bg-gray-50 hover:text-gray-80 shadow-md ">
-          <AddIcon className={`h-5`} />
-          New Feed
-        </button>
-      </div>
+    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen pt-14 px-4 tablet:mt-0 tablet:px-8 tablet:pt-0 relative">
+      <PageHeader />
 
       <div
-        className="h-full scrollBar overflow-y-scroll grid desktop:grid-cols-2 desktop:gap-x-8"
+        className="h-full scrollBar overflow-y-scroll grid desktop:grid-cols-2 desktop:gap-x-8 pt-14"
         style={{ scrollbarWidth: "none" }}
       >
-        {articles.map((article) => {
+        {/* {articles.map((article) => {
           return <Article article={article} key={article.id} />;
-        })}
+        })} */}
       </div>
     </div>
   );
+  ``;
 }

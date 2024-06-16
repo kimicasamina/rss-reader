@@ -1,6 +1,7 @@
 DOM PARSER FOR PODCAST:
 https://developer.mozilla.org/en-US/docs/Web/API/DOMParser
 https://wbugenis.medium.com/podcasts-rss-feeds-and-javascript-fc1eef9c65f9
+https://hackernoon.com/reactjs-tutorial-embed-your-youtube-and-medium-rss-feeds-into-your-website-9u6o37ge
 
 PARSE RSS TO JSON FORMAT:
 https://api.rss2json.com/v1/api.json
@@ -45,3 +46,7 @@ typography:
 h1:24px
 h2:
 p: 16 - 18 / -.03
+
+TODO:
+[] - error and success toast
+[] - token expiration
