@@ -12,7 +12,7 @@ export function AuthContextProvider({ children }) {
 
   const logoutUser = async () => {
     try {
-      const { data } = await axios.delete("/user/logout");
+      const { data } = await axios.delete("/api/user/logout");
       console.log(data);
       alert(data.message);
     } catch (err) {
@@ -33,10 +33,12 @@ export function AuthContextProvider({ children }) {
     async function fetchData() {
       if (!user) {
         try {
-          const { data } = await axios.get("/user/getuser").then(({ data }) => {
-            console.log("user data:", data);
-            setUser(data.user);
-          });
+          const { data } = await axios
+            .get("/api/user/getuser")
+            .then(({ data }) => {
+              console.log("user data:", data);
+              setUser(data.user);
+            });
           // setIsFetching(false);
         } catch (err) {
           console.log(err);

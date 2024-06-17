@@ -8,6 +8,9 @@ import {
   Route,
 } from "react-router-dom";
 
+// import hot toast
+import toast, { Toaster } from "react-hot-toast";
+
 // pages and layout
 import RootLayout from "./pages/Layout/RootLayout";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
@@ -32,6 +35,7 @@ export default function App() {
     // <UiContextProvider>
     // </UiContextProvider>
     <AuthContextProvider>
+      <Toaster />
       <RouterProvider router={router} />
     </AuthContextProvider>
   );

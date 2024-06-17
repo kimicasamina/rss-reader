@@ -87,27 +87,26 @@ import PageHeader from "../../components/Header/PageHeader";
 import useFetch from "../../hooks/useFetch";
 import useFetchRss from "../../hooks/useFetchRss";
 import { useState } from "react";
+import axios from "axios";
 export default function Home() {
-  // const [data, isLoading, error] = useFetchRss(
-  //   `https://news.ycombinator.com/rss`
-  // );
-  // console.log(data);
-  // console.log("articles", articles);
+  // const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+  // console.log("HOME");
 
-  const MAX_ARTICLES = 10;
-  const [articles, setArticles] = useState();
-  useEffect(() => {
-    const loadArticles = async () => {
-      fetch(
-        "https://api.rss2json.com/v1/api.json?rss_url=https://news.ycombinator.com/rss",
-        { headers: { Accept: "application/json", mode: "no-cors" } }
-      )
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.log(error));
-    };
-    loadArticles();
-  }, [MAX_ARTICLES]);
+  // useEffect(() => {
+  //   async function fetchRss() {
+  //     const rss_url =
+  //       "https://api.rss2json.com/v1/api.json?rss_url=" +
+  //       "https://news.ycombinator.com/rss";
+  //     const { data } = await axios.get(CORS_PROXY + rss_url, {
+  //       withCredentials: false,
+  //       baseURL: "",
+  //     });
+  //     console.log(data);
+  //   }
+
+  //   fetchRss();
+  // }, []);
+
   return (
     <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen pt-14 px-4 tablet:mt-0 tablet:px-8 tablet:pt-0 relative">
       <PageHeader />
@@ -116,9 +115,9 @@ export default function Home() {
         className="h-full scrollBar overflow-y-scroll grid desktop:grid-cols-2 desktop:gap-x-8 pt-14"
         style={{ scrollbarWidth: "none" }}
       >
-        {/* {articles.map((article) => {
+        {articles.map((article) => {
           return <Article article={article} key={article.id} />;
-        })} */}
+        })}
       </div>
     </div>
   );

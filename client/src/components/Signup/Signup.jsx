@@ -57,7 +57,7 @@ export default function Signup() {
     validateFormInputs();
     if (!errors) {
       try {
-        const { data } = await axios.post("/user/signup", {
+        const { data } = await axios.post("/api/user/signup", {
           email,
           username,
           password,

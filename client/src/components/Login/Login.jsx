@@ -22,7 +22,7 @@ export default function Login() {
     e.preventDefault();
     e.stopPropagation();
     try {
-      const { data } = await axios.post("/user/login", { email, password });
+      const { data } = await axios.post("/api/user/login", { email, password });
       loginUser(data.user);
       dispatch(closeModal());
       alert(data.message);

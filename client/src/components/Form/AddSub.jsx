@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
 
-import axios from "axios";
-
+// icons
 import { XMarkIcon } from "../../assets/icons";
-import { useDispatch } from "react-redux";
 import { closeModal } from "../../redux/reducers/ui";
 
+// library
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+
 export default function AddSub() {
+  // const [success, setSuccess] = useState(null);
+  // const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(null);
+  const [sub, setSub] = useState(null);
   const [input, setInput] = useState({
     rssUrl: "",
-    category: "",
+    category: null,
   });
 
   const dispatch = useDispatch();
@@ -17,33 +24,35 @@ export default function AddSub() {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const rss2json = "https://api.rss2json.com/v1/api.json?rss_url=";
-    // console.log("Add sub");
-    // await axios
-    //   .get(
-    //     "https://api.rss2json.com/v1/api.json?rss_url=https://news.ycombinator.com/rss",
-    //     {
-    //       withCredentials: false,
-    //       headers: { Accept: "application/json" },
-    //     }
-    //   )
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    const url = `https://api.rss2json.com/v1/api.json?rss_url=https://news.ycombinator.com/rss`;
-    const options = {
-      method: "GET",
-      mode: "no-cors",
-    };
-    const response = await fetch(url, options);
-    const json = await response.json();
-    console.log(json);
-    console.log("hello");
-    return json;
+    console.log("ADD SUB");
+    setIsLoading(true);
+
+    try {
+      const { data } = await axios.post("/api/subscription/addsub", {
+        rss_url: input.rssUrl,
+        category: input.category,
+      });
+
+      console.log("MESSAGE:", data.message);
+      console.log("SUB:", data.newSub);
+      setSub(data.newSub);
+      toast.success(data.message);
+    } catch (err) {
+      console.log("ERR", err);
+      toast.error(err.response.data.message);
+    } finally {
+      setIsLoading(false);
+      dispatch(closeModal());
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="bg-tertiary/60 backdrop-blur-lg absolute w-full h-full flex place-center">
+        <h1 className="text-4xl">LOADING...</h1>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -76,6 +85,7 @@ export default function AddSub() {
           <label htmlFor="">Category</label>
           <select
             name="category"
+            value={input.category}
             className="outline-none border p-2 rounded-md w-full "
             onChange={(e) => setInput({ ...input, category: e.target.value })}
           >
@@ -83,7 +93,7 @@ export default function AddSub() {
               Select a Category
             </option>
             {category.map((option, index) => (
-              <option value="" className="" key={index}>
+              <option className="" key={index}>
                 {option}
               </option>
             ))}
