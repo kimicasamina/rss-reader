@@ -13,7 +13,6 @@ import { ErrorHandler } from "./middleware/errorHandler.js";
 // routes
 import userRoute from "./routes/userRoute.js";
 import subscriptionRoute from "./routes/subscriptionRoute.js";
-import categoryRoute from "./routes/categoryRoute.js";
 
 const app = express();
 dotenv.config();
@@ -41,15 +40,16 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"))
   );
 } else {
+  // server react app
   app.get("/", (req, res) => res.send("Server is ready..."));
 }
 
+// json api
 app.use("/api/user", userRoute);
-app.use("/api/category", categoryRoute);
 app.use("/api/subscription", subscriptionRoute);
 app.use(ErrorHandler);
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log("SERVER STARTS AT:", process.env.PORT);
   console.log("NODE_ENV:", process.env.NODE_ENV);
 });

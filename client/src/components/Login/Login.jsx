@@ -8,6 +8,7 @@ import { FacebookIcon, TwitterIcon } from "../../assets/icons";
 import tailwindConfig from "../../../tailwind.config";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal, setModal } from "../../redux/reducers/ui";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const { user, setUser, loginUser, setIsLoading, setErrors } = useAuth();
@@ -23,13 +24,13 @@ export default function Login() {
     e.stopPropagation();
     try {
       const { data } = await axios.post("/api/user/login", { email, password });
+      console.log("DATA:", data);
       loginUser(data.user);
       dispatch(closeModal());
-      alert(data.message);
+      toast.success(data.message);
     } catch (err) {
       console.log(err.response.data.message);
-      setErrors(err.response.data.message);
-      alert(err.response.data.message);
+      toast.error(err.response.data.message);
     }
   };
 

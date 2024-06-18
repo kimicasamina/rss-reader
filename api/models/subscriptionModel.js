@@ -26,6 +26,11 @@ const subscriptionSchema = new mongoose.Schema({
   category: {
     type: String,
   },
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: "users",
+  },
+  blogs: { type: Array },
 });
 
 const subscriptionModel = mongoose.model("subscriptions", subscriptionSchema);

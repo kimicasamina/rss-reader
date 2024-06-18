@@ -10,6 +10,7 @@ import {
 
 // import hot toast
 import toast, { Toaster } from "react-hot-toast";
+import { HomeIcon } from "./assets/icons";
 
 // pages and layout
 import RootLayout from "./pages/Layout/RootLayout";
@@ -35,7 +36,31 @@ export default function App() {
     // <UiContextProvider>
     // </UiContextProvider>
     <AuthContextProvider>
-      <Toaster />
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        // toastOptions={{
+        //   className: "",
+        //   style: {
+        //     border: "1px solid #713200",
+        //     padding: "16px",
+        //     color: "#713200",
+        //     width: "100px",
+        //   },
+        //   success: {
+        //     iconTheme: {
+        //       primary: "green",
+        //       secondary: "black",
+        //     },
+        //   },
+        //   error: {
+        //     iconTheme: {
+        //       primary: "green",
+        //       secondary: "black",
+        //     },
+        //   },
+        // }}
+      />
       <RouterProvider router={router} />
     </AuthContextProvider>
   );

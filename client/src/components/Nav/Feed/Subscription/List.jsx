@@ -1,49 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { FolderIcon } from "../../../../assets/icons";
 import { Link } from "react-router-dom";
-
-const list = [
-  {
-    id: 1,
-    name: "TechCrunch",
-    url: "www.com",
-    category: "Technology",
-  },
-  {
-    id: 2,
-    name: "The Next Web",
-    url: "www.com",
-    category: "Technology",
-  },
-  {
-    id: 3,
-    name: "Finance Times",
-    url: "www.com",
-    category: "Finance",
-  },
-  {
-    id: 4,
-    name: "The Economist",
-    url: "www.com",
-    category: "Economy",
-  },
-];
+import { useAuth } from "../../../../context/useAuth";
+import { useDispatch, useSelector } from "react-redux";
+import { setSubs } from "../../../../redux/reducers/subscription";
+import axios from "axios";
 export default function List() {
+  const { user } = useAuth();
+  const dispatch = useDispatch();
+  const subscription = useSelector((state) => state.subscription);
+  console.log("SUBS:", subscription);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (user) {
+        try {
+          const { data } = await axios.get(`/api/user/${user._id}/subs`);
+          console.log("DATA:", data.user.subscription);
+          dispatch(setSubs(data.user.subscription));
+        } catch (err) {
+          console.log(err);
+          // toast.error(err.response?.data?.message);
+          // setError(err.response.data.message);
+        }
+      }
+    }
+    fetchData();
+  }, [user]);
+
   return (
     <div className="flex-1">
-      {list && list.length > 0
-        ? list.map((item, index) => {
+      {subscription && subscription.length > 0
+        ? subscription.map((sub, index) => {
             return (
-              // <div className="flex items-center py-1" key={index}>
-              // </div>
-              <Link
+              <div
                 className={
-                  "w-full flex items-center gap-x-2 cursor-pointer py-1"
+                  "w-full flex items-center gap-x-2 cursor-pointer py-1 group h-10"
                 }
-                key={index}
+                key={sub._id}
               >
-                <span className="w-5 h-5 rounded-full bg-primary"></span>
-                <p className="hover:text-gray-50">{item.name}</p>
-              </Link>
+                {" "}
+                <FolderIcon
+                  className={
+                    "w-5 h-5 group-hover:text-gray-50 group-hover:ease-in-out group-hover:duration-200 "
+                  }
+                />
+                <p className="group group-hover:text-gray-50 group-hover:ease-in-out group-hover:duration-200 ">
+                  {sub?.title.substring(0, 240)}
+                </p>
+              </div>
             );
           })
         : null}

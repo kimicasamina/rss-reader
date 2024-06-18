@@ -50,3 +50,16 @@ p: 16 - 18 / -.03
 TODO:
 [] - error and success toast
 [] - token expiration
+[] - nav context
+
+FIX:
+
+# PORT ALREADY IN-USE:
+
+## Find running process
+
+    sudo lsof -i :3000
+
+## Kill process
+
+    kill -9 <PID>

@@ -1,6 +1,7 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import toast from "react-hot-toast";
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
@@ -14,13 +15,12 @@ export function AuthContextProvider({ children }) {
     try {
       const { data } = await axios.delete("/api/user/logout");
       console.log(data);
-      alert(data.message);
+      setUser(null);
+      toast.success(data.message);
     } catch (err) {
       console.log(err);
-      alert(err.response.data.message);
+      toast.error(err.response.data.message);
     }
-    setUser(null);
-    return <Navigate to="/login" />;
   };
 
   const loginUser = async (data) => {

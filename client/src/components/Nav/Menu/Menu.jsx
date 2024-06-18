@@ -89,7 +89,7 @@ export default function Menu({ menuHidden }) {
                 }
               />
               <p className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 ">
-                Login
+                Login/Signup
               </p>
             </button>
           )}

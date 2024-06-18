@@ -6,21 +6,25 @@ import { closeModal } from "../../redux/reducers/ui";
 
 // library
 import axios from "axios";
-import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/useAuth";
+
+// redux
+import { useDispatch } from "react-redux";
+import { addSub } from "../../redux/reducers/subscription";
+
+import Loading from "../Spinner/Loading";
 
 export default function AddSub() {
-  // const [success, setSuccess] = useState(null);
-  // const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
-  const [sub, setSub] = useState(null);
   const [input, setInput] = useState({
     rssUrl: "",
     category: null,
   });
+  const { user, addSub } = useAuth();
+  const [isLoading, setIsLoading] = useState(null);
 
   const dispatch = useDispatch();
-  const category = ["Tech", "Finance", "Entertainment"];
+  const category = ["Tech", "Finance", "Entertainment", "Gaming", "Business"];
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -28,18 +32,18 @@ export default function AddSub() {
     setIsLoading(true);
 
     try {
-      const { data } = await axios.post("/api/subscription/addsub", {
+      const { data } = await axios.put(`/api/user/${user._id}/addsub`, {
         rss_url: input.rssUrl,
         category: input.category,
       });
 
-      console.log("MESSAGE:", data.message);
-      console.log("SUB:", data.newSub);
-      setSub(data.newSub);
+      console.log("DATA:", data);
+      console.log("NEWSUB:", data.newSub);
+      dispatch(addSub(data.newSub));
       toast.success(data.message);
     } catch (err) {
       console.log("ERR", err);
-      toast.error(err.response.data.message);
+      toast.error(err.response?.data?.message);
     } finally {
       setIsLoading(false);
       dispatch(closeModal());
@@ -47,11 +51,7 @@ export default function AddSub() {
   };
 
   if (isLoading) {
-    return (
-      <div className="bg-tertiary/60 backdrop-blur-lg absolute w-full h-full flex place-center">
-        <h1 className="text-4xl">LOADING...</h1>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

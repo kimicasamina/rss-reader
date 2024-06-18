@@ -2,6 +2,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import userModel from "../models/userModel.js";
 import { createError } from "../utils/createError.js";
+import subscriptionModel from "../models/subscriptionModel.js";
+import Parser from "rss-parser";
 
 export const getAllUsers = async (req, res, next) => {
   try {
@@ -58,7 +60,7 @@ export const login = async (req, res, next) => {
       // return createError(401, "User already exist! Login Instead");
       return res.status(401).json({
         status: "error",
-        message: "User already exist! Login instead.",
+        message: "User does not exist.",
       });
     }
 
@@ -90,11 +92,13 @@ export const login = async (req, res, next) => {
       _id: user._id,
       username: user.username,
       email: user.email,
-      subscription: user.subscription,
-      category: user.category,
     };
 
-    return res.status(201).json({ status: "ok", user: userDetails });
+    return res.status(201).json({
+      status: "ok",
+      user: userDetails,
+      message: "You are successfully logged in.",
+    });
   } catch (err) {
     // console.log("err", err);
     console.log("err", err);
@@ -124,7 +128,9 @@ export const getUser = async (req, res, next) => {
   let user = req.user;
   console.log("REQ USER_ID", user);
   try {
-    const userInfo = await userModel.findById(user.id).select("-password");
+    const userInfo = await userModel
+      .findById(user.id)
+      .select("-password -subscription -category");
     return res.status(200).json({ user: userInfo });
   } catch (err) {
     console.log(err);
@@ -147,4 +153,76 @@ export const updateCategory = async (req, res, next) => {
       .status(err.statusCode)
       .json({ status: "error", message: err.message });
   }
+};
+
+export const getAllSubs = async (req, res, next) => {
+  let userId = req.params.id;
+  console.log("GET ALL SUBS:", userId);
+
+  try {
+    const user = await userModel
+      .findOne({ _id: userId })
+      .select("subscription -_id")
+      .populate("subscription");
+    console.log("ALL SUBS:", user);
+    return res.status(200).json({ status: "ok", user });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(err.statusCode)
+      .json({ status: "error", message: err.message });
+  }
+};
+
+export const addSub = async (req, res, next) => {
+  const id = req.params.id;
+  const { rss_url, category } = req.body;
+  console.log("Add subscriptions...", rss_url, category, id);
+  let parser = new Parser();
+  let feed;
+
+  try {
+    const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+    feed = await parser.parseURL(rss_url);
+    console.log(feed);
+    // feed = await parser.parseURL(rss_url);
+    // console.log(feed.title);
+  } catch (err) {
+    console.log("ERR:", err);
+    return next(createError(err.statusCode, err.message));
+  }
+
+  const existingSub = await subscriptionModel.findOne({
+    title: feed.title,
+    user: id,
+  });
+
+  if (existingSub) {
+    console.log("Feed already exist.");
+    return next(createError(404, "Feed already exist."));
+  }
+
+  const user = await userModel.findById(id);
+
+  const newSub = new subscriptionModel({
+    title: feed.title,
+    rss_url: rss_url,
+    link: feed.link,
+    author: feed.title,
+    description: feed.description,
+    image_url: feed?.image?.url ?? "",
+    category: category,
+    user: user._id,
+  });
+
+  feed.items.forEach((item) => {
+    newSub.blogs.push(item);
+  });
+  await newSub.save();
+  user.subscription.push(newSub);
+  await user.save();
+
+  return res
+    .status(201)
+    .json({ message: "New subscription added", newSub, feed: feed });
 };

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal, setModal } from "../../redux/reducers/ui";
 // icons
 import { EyeIcon, EyeSlashIcon, XMarkIcon } from "../../assets/icons";
+import toast from "react-hot-toast";
 
 export default function Signup() {
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ export default function Signup() {
     toggle: false,
   });
 
-  const validateFormInputs = async (e) => {
+  const validateFormInputs = async (input) => {
     console.log("validation");
     let re = "/^[^s@]+@[^s@]+.[^s@]+$/";
     const validationErrors = {};
@@ -50,24 +52,29 @@ export default function Signup() {
     }
 
     setErrors(validationErrors);
+    // console.log(validationErrors.length);
+    // if (validationErrors) {
+    // } else {
+    //   setErrors(null);
+    // }
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    validateFormInputs();
-    if (!errors) {
+
+    if (!errors || errors === undefined) {
       try {
         const { data } = await axios.post("/api/user/signup", {
-          email,
-          username,
-          password,
+          username: input.username,
+          email: input.email,
+          password: input.password,
         });
-        if (data.status === "ok") {
-          console.log(data.message);
-          navigate("/login");
-        }
+        console.log(data);
+        dispatch(setModal({ isVisible: true, content: "login" }));
+        toast.success(data?.message);
       } catch (err) {
-        console.log(err.response.data.message);
+        console.log(err.response.data?.message);
+        toast.error(err.response.data?.message);
         // setErrors(err.response.data.message);
       }
     }
@@ -87,7 +94,10 @@ export default function Signup() {
       <form
         action=""
         className="w-full flex flex-col gap-y-8 "
-        onSubmit={(e) => handleFormSubmit(e)}
+        onSubmit={(e) => {
+          validateFormInputs(input);
+          handleFormSubmit(e);
+        }}
       >
         <div className="">
           <h1 className="">Signup</h1>
@@ -228,7 +238,7 @@ export default function Signup() {
             )}
           </div>
         </div>
-        <button className="btn w-full bg-secondary text-tertiary">
+        <button type="submit" className="btn w-full bg-secondary text-tertiary">
           Signup
         </button>
       </form>

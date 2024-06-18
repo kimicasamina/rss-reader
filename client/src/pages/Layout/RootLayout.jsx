@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 // rrd
 import { Outlet } from "react-router-dom";
+
+// library
+import toast from "react-hot-toast";
+import axios from "axios";
 
 // components
 import Sidebar from "../../components/Nav/Sidebar/Sidebar";
@@ -13,11 +17,15 @@ import Signup from "../../components/Signup/Signup";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../redux/reducers/ui";
 import AddSub from "../../components/Form/AddSub";
+import useFetch from "../../hooks/useFetch";
+import { setSubs } from "../../redux/reducers/subscription";
+import { useAuth } from "../../context/useAuth";
 
 export default function RootLayout() {
   const [displayMobileNav, setDisplayMobileNav] = useState(false);
+  const { user, loginUser, isLoading } = useAuth();
+
   const uiModal = useSelector((state) => state.ui.modal);
-  console.log("uiModal:", uiModal);
   const dispatch = useDispatch();
 
   return (
