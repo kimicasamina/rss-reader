@@ -1,7 +1,9 @@
 import React from "react";
 
-import { UserIcon, MenuIcon, RssIcon } from "../../../assets/icons";
+// icons
+import { UserIcon, MenuIcon, RssIcon } from "../../../../assets/icons";
 
+// components
 import Menu from "../Menu/Menu";
 import Feed from "../Feed/Feed";
 import User from "../User/User";

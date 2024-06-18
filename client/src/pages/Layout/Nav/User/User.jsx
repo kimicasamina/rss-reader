@@ -1,7 +1,10 @@
 import React from "react";
-import { useAuth } from "../../../context/useAuth";
-import { UserIcon } from "../../../assets/icons";
-import { LoginIcon, LogoutIcon } from "../../../assets/icons";
+
+// icons
+import { UserIcon } from "../../../../assets/icons";
+
+// auth
+import { useAuth } from "../../../../context/useAuth";
 
 export default function User() {
   const { user } = useAuth();

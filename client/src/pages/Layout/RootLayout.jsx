@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 // components
-import Sidebar from "../../components/Nav/Sidebar/Sidebar";
-import MobileNav from "../../components/Nav/Mobile/MobileNav";
+import Sidebar from "./Nav/Sidebar/Sidebar";
+import MobileNav from "./Nav/Mobile/MobileNav";
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
 

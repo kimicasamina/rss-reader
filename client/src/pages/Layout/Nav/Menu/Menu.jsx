@@ -3,15 +3,22 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // icons
-import { SettingsIcon } from "../../../assets/icons";
-import { HomeIcon } from "../../../assets/icons";
-import { LogoutIcon } from "../../../assets/icons";
-import { LoginIcon } from "../../../assets/icons";
-import { BookmarkIcon } from "../../../assets/icons";
-import { TagIcon } from "../../../assets/icons";
-import { useAuth } from "../../../context/useAuth";
+import {
+  SettingsIcon,
+  HomeIcon,
+  LogoutIcon,
+  LoginIcon,
+  BookmarkIcon,
+  TagIcon,
+} from "../../../../assets/icons";
+
+// context & hooks
+import { useAuth } from "../../../../context/useAuth";
+
+// redux
 import { useSelector, useDispatch } from "react-redux";
-import { setModal } from "../../../redux/reducers/ui";
+import { setModal } from "../../../../redux/reducers/ui";
+
 export default function Menu({ menuHidden }) {
   const { user, logoutUser } = useAuth();
   const uiModal = useSelector((state) => state.ui.modal);
