@@ -1,14 +1,14 @@
 import React from "react";
-import { useAuth } from "../../../context/useAuth";
-import { UserIcon } from "../../../assets/icons";
-import { LoginIcon, LogoutIcon } from "../../../assets/icons";
+import { useAuth } from "../../../../context/useAuth";
+import { UserIcon } from "../../../../assets/icons";
+import { LoginIcon, LogoutIcon } from "../../../../assets/icons";
 
 export default function User() {
   const { user } = useAuth();
   return (
     <>
       {user ? (
-        <div className="flex items-center gap-x-2">
+        <div className="flex items-center gap-x-2 mb-2">
           <UserIcon
             className={"hover:animation-ease-in-out h-6 cursor-pointer "}
           />

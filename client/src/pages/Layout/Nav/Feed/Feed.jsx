@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AddFolderIcon, EditIcon } from "../../../assets/icons";
+import { AddFolderIcon, EditIcon } from "../../../../assets/icons";
 
 import FeedMenu from "./FeedMenu";
 import List from "./Subscription/List";

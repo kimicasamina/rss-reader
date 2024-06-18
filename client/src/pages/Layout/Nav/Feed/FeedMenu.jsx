@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AddIcon, SearchIcon } from "../../../assets/icons";
+import { AddIcon, SearchIcon } from "../../../../assets/icons";
 
 export default function FeedMenu() {
   return (

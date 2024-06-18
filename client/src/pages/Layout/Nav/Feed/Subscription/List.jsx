@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { FolderIcon } from "../../../../assets/icons";
+import { FolderIcon } from "../../../../../assets/icons";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../../../context/useAuth";
+import { useAuth } from "../../../../../context/useAuth";
 import { useDispatch, useSelector } from "react-redux";
-import { setSubs } from "../../../../redux/reducers/subscription";
+import { setSubs } from "../../../../../redux/reducers/subscription";
 import axios from "axios";
 export default function List() {
   const { user } = useAuth();

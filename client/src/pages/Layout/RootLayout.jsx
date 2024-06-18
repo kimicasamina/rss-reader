@@ -8,10 +8,10 @@ import toast from "react-hot-toast";
 import axios from "axios";
 
 // components
-import Sidebar from "../../components/Nav/Sidebar/Sidebar";
-import MobileNav from "../../components/Nav/Mobile/MobileNav";
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
+import MobileNav from "./Nav/Mobile/MobileNav";
+import Sidebar from "./Nav/Sidebar/Sidebar";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";

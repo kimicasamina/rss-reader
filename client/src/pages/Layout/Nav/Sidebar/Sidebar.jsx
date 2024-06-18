@@ -1,7 +1,6 @@
 import React from "react";
 
-import { UserIcon, MenuIcon, RssIcon } from "../../../assets/icons";
-
+import { UserIcon, MenuIcon, RssIcon } from "../../../../assets/icons";
 import Menu from "../Menu/Menu";
 import Feed from "../Feed/Feed";
 
@@ -18,7 +17,7 @@ export default function Sidebar({
       <div
         className={`w-full flex justify-between items-center h-8 py-4 ${displayMobileNav ? "mb-4" : "mb-4"}`}
       >
-        <div className="w-full flex gap-x-2">
+        <div className="w-full flex items-center gap-x-2">
           <RssIcon className={`w-6 h-6`} />
           <h1 className="">Maruya</h1>
         </div>

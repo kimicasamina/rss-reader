@@ -3,15 +3,15 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // icons
-import { SettingsIcon } from "../../../assets/icons";
-import { HomeIcon } from "../../../assets/icons";
-import { LogoutIcon } from "../../../assets/icons";
-import { LoginIcon } from "../../../assets/icons";
-import { BookmarkIcon } from "../../../assets/icons";
-import { TagIcon } from "../../../assets/icons";
-import { useAuth } from "../../../context/useAuth";
+import { SettingsIcon } from "../../../../assets/icons";
+import { HomeIcon } from "../../../../assets/icons";
+import { LogoutIcon } from "../../../../assets/icons";
+import { LoginIcon } from "../../../../assets/icons";
+import { BookmarkIcon } from "../../../../assets/icons";
+import { TagIcon } from "../../../../assets/icons";
+import { useAuth } from "../../../../context/useAuth";
 import { useSelector, useDispatch } from "react-redux";
-import { setModal } from "../../../redux/reducers/ui";
+import { setModal } from "../../../../redux/reducers/ui";
 export default function Menu({ menuHidden }) {
   const { user, logoutUser } = useAuth();
   const uiModal = useSelector((state) => state.ui.modal);
@@ -31,7 +31,7 @@ export default function Menu({ menuHidden }) {
             }
           />
           <p className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200">
-            Feed
+            Home
           </p>
         </Link>
         <div className="flex items-center gap-x-2 py-1 cursor-pointer hover-bg-menu group ">
