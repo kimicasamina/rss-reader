@@ -40,13 +40,16 @@ export default function List() {
                 key={sub._id}
               >
                 {" "}
-                <FolderIcon
+                {sub.image_url ? (
+                  <img src={sub.image_url} alt="" className="w-5 h-5" />
+                ) : null}
+                {/* <FolderIcon
                   className={
                     "w-5 h-5 group-hover:text-gray-50 group-hover:ease-in-out group-hover:duration-200 "
                   }
-                />
+                /> */}
                 <p className="group group-hover:text-gray-50 group-hover:ease-in-out group-hover:duration-200 ">
-                  {sub?.title.substring(0, 240)}
+                  {sub?.title}
                 </p>
               </div>
             );

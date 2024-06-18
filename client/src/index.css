@@ -89,8 +89,9 @@
     @apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
   }
   .bounceAnimation {
-    animation: bounce infinite 1500ms ease-in-out;
-    transition: animation 1500ms;
+    animation: bounce infinite 2000ms ease-in-out;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    transition: animation 2000ms;
     /* animation-name: bounce;
     animation-duration: 2000ms;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
@@ -111,8 +112,7 @@
       transform: translateY(0px);
     }
     50% {
-      background-color: green;
-      transform: translateY(8px);
+      transform: translateY(6px);
     }
     100% {
       transform: translateY(0px);
