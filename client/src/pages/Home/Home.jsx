@@ -82,12 +82,9 @@ const articles = [
   },
 ];
 
-import Article from "../../components/Article/Article";
-import PageHeader from "../Layout/Header/PageHeader";
-import useFetch from "../../hooks/useFetch";
-import useFetchRss from "../../hooks/useFetchRss";
-import { useState } from "react";
 import axios from "axios";
+import Article from "../../components/Article/Article";
+import { useState } from "react";
 export default function Home() {
   // const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
   // console.log("HOME");
@@ -108,7 +105,7 @@ export default function Home() {
   // }, []);
 
   return (
-    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 pt-[calc(theme(spacing.12)+72px)] tablet:pt-[48px]">
+    <div className="flex-1 flex flex-col w-full h-screen px-4 tablet:px-8 pt-[calc(theme(spacing.12)+72px)] tablet:pt-[48px]">
       <div
         className="h-full scrollBar overflow-y-scroll grid desktop:grid-cols-2 desktop:gap-x-8 "
         style={{ scrollbarWidth: "none" }}
@@ -119,5 +116,4 @@ export default function Home() {
       </div>
     </div>
   );
-  ``;
 }

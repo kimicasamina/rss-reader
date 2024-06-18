@@ -15,6 +15,8 @@ import { addSub } from "../../redux/reducers/subscription";
 
 import Loading from "../Spinner/Loading";
 
+import Parser from "rss-parser";
+
 export default function AddSub() {
   const [input, setInput] = useState({
     rssUrl: "",
@@ -29,6 +31,7 @@ export default function AddSub() {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log("ADD SUB");
+
     setIsLoading(true);
 
     try {

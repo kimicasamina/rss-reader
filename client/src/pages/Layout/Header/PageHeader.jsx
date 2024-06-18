@@ -21,8 +21,7 @@ export default function PageHeader() {
     dispatch(setModal({ isVisible: true, content: "addfeed" }));
   };
   return (
-    <div className="flex w-full flex-col tablet:flex-row items-start justify-between tablet:items-center gap-y-1 py-2 bg-primary/60 background-blur-xl absolute top-12 tablet:top-0 px-4 tablet:px-8 ">
-      {/* // <div className="w-full flex-col tablet:flex-row items-center tablet:items-start justify-between tablet:items-center gap-y-1 py-2 px-4 tablet:px-8 pt-12 tablet:pt-2"> */}
+    <div className="flex w-full flex-col tablet:flex-row items-start justify-between tablet:items-center gap-y-1 py-2 bg-tertiary/70 background-blur-xl absolute left-0 right-0 top-12 tablet:top-0 px-4 tablet:px-8 ">
       <div className="flex flex-col gap-y-2">
         <div className="flex items-center gap-x-2">
           <h1 className="text-black ">Home</h1>

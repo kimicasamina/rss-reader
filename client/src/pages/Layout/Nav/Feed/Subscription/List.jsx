@@ -34,7 +34,8 @@ export default function List() {
         ? subscription.map((sub, index) => {
             return (
               <Link
-                to={`/${sub.title}`}
+                to={`/${sub._id}`}
+                state={{ id: sub._id }}
                 className={
                   "w-full flex items-center gap-x-2 cursor-pointer py-1 group h-10"
                 }
