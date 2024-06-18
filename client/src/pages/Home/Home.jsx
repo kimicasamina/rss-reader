@@ -83,7 +83,7 @@ const articles = [
 ];
 
 import Article from "../../components/Article/Article";
-import PageHeader from "../../components/Header/PageHeader";
+import PageHeader from "../Layout/Header/PageHeader";
 import useFetch from "../../hooks/useFetch";
 import useFetchRss from "../../hooks/useFetchRss";
 import { useState } from "react";
@@ -108,11 +108,9 @@ export default function Home() {
   // }, []);
 
   return (
-    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen pt-14 px-4 tablet:mt-0 tablet:px-8 tablet:pt-0 relative">
-      <PageHeader />
-
+    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 pt-[calc(theme(spacing.12)+72px)] tablet:pt-[48px]">
       <div
-        className="h-full scrollBar overflow-y-scroll grid desktop:grid-cols-2 desktop:gap-x-8 pt-14"
+        className="h-full scrollBar overflow-y-scroll grid desktop:grid-cols-2 desktop:gap-x-8 "
         style={{ scrollbarWidth: "none" }}
       >
         {articles.map((article) => {

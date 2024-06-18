@@ -20,12 +20,14 @@ import Home from "./pages/Home/Home";
 // hooks
 import { AuthContextProvider } from "./context/useAuth";
 import { UiContextProvider } from "./context/useUi";
+import Feed from "./pages/Feed/Feed";
 
 // components
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route path="/" element={<Home />} />
+      <Route path="/:feed" element={<Feed />} />
       {/* <Route element={<ProtectedRoutes />}>
       </Route> */}
     </Route>
@@ -33,34 +35,8 @@ const router = createBrowserRouter(
 );
 export default function App() {
   return (
-    // <UiContextProvider>
-    // </UiContextProvider>
     <AuthContextProvider>
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
-        // toastOptions={{
-        //   className: "",
-        //   style: {
-        //     border: "1px solid #713200",
-        //     padding: "16px",
-        //     color: "#713200",
-        //     width: "100px",
-        //   },
-        //   success: {
-        //     iconTheme: {
-        //       primary: "green",
-        //       secondary: "black",
-        //     },
-        //   },
-        //   error: {
-        //     iconTheme: {
-        //       primary: "green",
-        //       secondary: "black",
-        //     },
-        //   },
-        // }}
-      />
+      <Toaster position="top-center" reverseOrder={false} />
       <RouterProvider router={router} />
     </AuthContextProvider>
   );

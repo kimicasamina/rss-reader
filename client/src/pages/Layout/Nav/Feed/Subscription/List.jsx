@@ -33,11 +33,12 @@ export default function List() {
       {subscription && subscription.length > 0
         ? subscription.map((sub, index) => {
             return (
-              <div
+              <Link
+                to={`/${sub.title}`}
                 className={
                   "w-full flex items-center gap-x-2 cursor-pointer py-1 group h-10"
                 }
-                key={sub._id}
+                key={index}
               >
                 {" "}
                 {sub.image_url ? (
@@ -51,7 +52,7 @@ export default function List() {
                 <p className="group group-hover:text-gray-50 group-hover:ease-in-out group-hover:duration-200 ">
                   {sub?.title}
                 </p>
-              </div>
+              </Link>
             );
           })
         : null}
