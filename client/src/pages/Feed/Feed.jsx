@@ -9,6 +9,7 @@ export default function Feed() {
   const { user } = useAuth();
   const subscription = useSelector((state) => state.subscription);
   const sub = subscription.find((sub) => sub._id === id);
+  console.log("sub", sub);
 
   return (
     <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 ">

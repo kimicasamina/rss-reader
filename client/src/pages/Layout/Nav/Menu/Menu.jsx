@@ -93,10 +93,5 @@ export default function Menu({ menuHidden }) {
         )}
       </div>
     </div>
-    // <div className="">
-    //   {/* ---- SIDEBAR MENU ----- */}
-
-    //   {/* END  */}
-    // </div>
   );
 }

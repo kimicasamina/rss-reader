@@ -39,7 +39,7 @@ export default function RootLayout() {
       }
     }
     fetchData();
-  }, [user]);
+  }, []);
 
   return (
     <div className="flex-col tablet:flex-row flex w-full max-w-screen-desktop mx-auto h-screen relative ">
@@ -50,7 +50,7 @@ export default function RootLayout() {
         >
           {uiModal.content === "login" ? <Login /> : null}
           {uiModal.content === "signup" ? <Signup /> : null}
-          {uiModal.content === "addfeed" ? <AddSub /> : null}
+          {uiModal.content === "addsub" ? <AddSub /> : null}
         </div>
       ) : null}
       <MobileNav

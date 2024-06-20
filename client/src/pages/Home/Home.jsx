@@ -45,12 +45,11 @@ export default function Home() {
   const feed = formatFeed(subs);
 
   return (
-    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 pt-[calc(theme(spacing.12)+72px)] tablet:pt-[48px]">
+    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 ">
       <div
-        className="h-full scrollBar overflow-y-scroll flex flex-col gap-y-10 py-8"
+        className="h-full scrollBar overflow-y-scroll flex flex-col gap-y-10 pt-[calc(72px+88px)] tablet:pt-[calc(48px+60px)]"
         style={{ scrollbarWidth: "none" }}
       >
-        <h1 className="">HELLO WORLD!</h1>
         {user && subs && feed
           ? feed.map((item, i) => {
               return (
