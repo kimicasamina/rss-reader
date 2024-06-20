@@ -58,7 +58,7 @@ FIX:
 
 ## Find running process
 
-    sudo lsof -i :3000
+    sudo lsof -i :8080
 
 ## Kill process
 

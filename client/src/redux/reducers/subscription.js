@@ -28,7 +28,14 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialValue = [{ name: "hackernoon" }, { name: "reddit" }];
+const initialValue = [
+  {
+    id: null,
+    category: "",
+    feed: [],
+    user: null,
+  },
+];
 
 const subscriptionSlice = createSlice({
   name: "subscription",
@@ -40,10 +47,13 @@ const subscriptionSlice = createSlice({
       return [...action.payload];
     },
     addSub(state, action) {
-      return [...state, action.payload.newSub];
+      return [...state, action.payload];
+    },
+    deleteSubs(state, action) {
+      return null;
     },
   },
 });
 
-export const { addSub, setSubs } = subscriptionSlice.actions;
+export const { addSub, setSubs, deleteSubs } = subscriptionSlice.actions;
 export default subscriptionSlice.reducer;

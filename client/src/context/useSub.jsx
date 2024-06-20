@@ -29,13 +29,6 @@ export function AuthContextProvider({ children }) {
     return <Navigate to="/" />;
   };
 
-  const addSub = async (newSub) => {
-    setUser({
-      ...user,
-      subscription: [...user.subscription, newSub],
-    });
-  };
-
   useEffect(() => {
     async function fetchData() {
       if (!user) {

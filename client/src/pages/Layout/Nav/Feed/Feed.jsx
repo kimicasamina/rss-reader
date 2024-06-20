@@ -7,10 +7,10 @@ import List from "./Subscription/List";
 
 export default function Feed() {
   return (
-    <div className="relative h-full flex flex-col bg-transparent">
+    <div className="relative w-full h-full flex flex-col bg-transparent">
       <FeedMenu />
       <List />
-      <div className="flex justify-self-end justify-between ">
+      <div className="flex justify-self-end justify-between pt-2">
         <AddFolderIcon
           className={
             "cursor-pointer hover:text-secondary hover:ease-in-out group-hover:duration-200 h-5 "

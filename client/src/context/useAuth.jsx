@@ -2,12 +2,15 @@ import React, { useState, useContext, createContext, useEffect } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { deleteSubs, setSubs } from "../redux/reducers/subscription";
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState(null);
+  const dispatch = useDispatch();
 
   console.log("user:", user);
 
@@ -16,6 +19,8 @@ export function AuthContextProvider({ children }) {
       const { data } = await axios.delete("/api/user/logout");
       console.log(data);
       setUser(null);
+      dispatch(setSubs(null));
+      // dispatch(deleteSubs());
       toast.success(data.message);
     } catch (err) {
       console.log(err);

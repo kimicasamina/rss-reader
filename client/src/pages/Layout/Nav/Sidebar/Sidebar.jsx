@@ -13,7 +13,7 @@ export default function Sidebar({
   setModal,
 }) {
   return (
-    <div className="hidden tablet:flex w-full tablet:max-w-[300px] flex-col px-2 pt-4 pb-2 tablet:bg-tertiary">
+    <div className="hidden tablet:flex w-full h-full tablet:max-w-[300px] flex-col px-2 pt-4 pb-2 tablet:bg-tertiary z-10 ">
       <div
         className={`w-full flex justify-between items-center h-8 py-4 ${displayMobileNav ? "mb-4" : "mb-4"}`}
       >

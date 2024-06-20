@@ -160,12 +160,9 @@ export const getAllSubs = async (req, res, next) => {
   console.log("GET ALL SUBS:", userId);
 
   try {
-    const user = await userModel
-      .findOne({ _id: userId })
-      .select("subscription -_id")
-      .populate("subscription");
-    console.log("ALL SUBS:", user);
-    return res.status(200).json({ status: "ok", user });
+    const subs = await subscriptionModel.find({ user: userId });
+    console.log("ALL SUBS:", subs);
+    return res.status(200).json({ status: "ok", subs });
   } catch (err) {
     console.log(err);
     return res
@@ -182,6 +179,15 @@ export const addSub = async (req, res, next) => {
   let feed;
 
   try {
+    const existingSub = await subscriptionModel.findOne({
+      feed: { feedUrl: rss_url },
+    });
+
+    if (existingSub) {
+      console.log("Feed already exist.");
+      return next(createError(404, "Feed already exist."));
+    }
+
     const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
     feed = await parser.parseURL(rss_url);
     console.log(feed);
@@ -192,35 +198,15 @@ export const addSub = async (req, res, next) => {
     return next(createError(err.statusCode, err.message));
   }
 
-  const existingSub = await subscriptionModel.findOne({
-    title: feed.title,
-    user: id,
-  });
-
-  if (existingSub) {
-    console.log("Feed already exist.");
-    return next(createError(404, "Feed already exist."));
-  }
-
   const user = await userModel.findById(id);
 
   const newSub = new subscriptionModel({
-    title: feed.title,
-    rss_url: rss_url,
-    link: feed.link,
-    author: feed.title,
-    description: feed.description,
-    image_url: feed?.image?.url ?? "",
+    feed: feed,
     category: category,
     user: user._id,
   });
 
-  feed.items.forEach((item) => {
-    newSub.blogs.push(item);
-  });
   await newSub.save();
-  user.subscription.push(newSub);
-  await user.save();
 
   return res
     .status(201)
