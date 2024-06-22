@@ -49,3 +49,47 @@ export const addSub = async (req, res, next) => {
 
   return res.status(201).json({ message: "New subscription added", newSub });
 };
+
+export const getLatestSub = async (req, res, next) => {
+  const id = req.params.id;
+  console.log("id:", id);
+  let parser = new Parser();
+  let url = "";
+
+  try {
+    const existingSub = await subscriptionModel.findById(id);
+    url = existingSub.feed.feedUrl;
+    console.log("Existing Sub", url);
+    let feed = await parser.parseURL(url);
+    console.log("FEED:", feed);
+    let latestSub;
+
+    if (feed) {
+      latestSub = await subscriptionModel.findOneAndUpdate(
+        { _id: existingSub._id },
+        { feed: feed }
+      );
+    }
+
+    console.log("LATEST SUB", latestSub);
+    return res
+      .status(201)
+      .json({ status: "ok", message: "Latest feed added.", latestSub });
+  } catch (err) {
+    console.log("ERR:", err);
+    return next(createError(err.status, err.message));
+  }
+};
+
+export const deleteSub = async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    const existingSub = await subscriptionModel.findByIdAndDelete(id);
+    return res
+      .status(201)
+      .json({ status: ok, message: "Subscription deleted." });
+  } catch (err) {
+    console.log(err);
+  }
+};

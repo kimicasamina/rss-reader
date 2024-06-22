@@ -52,8 +52,21 @@ const subscriptionSlice = createSlice({
     deleteSubs(state, action) {
       return null;
     },
+    updateSubs(state, action) {
+      const subCopy = [...state];
+      const newSub = subCopy.map((s) => {
+        if (s._id === action.payload._id) {
+          console.log("New", s);
+          return action.payload;
+        }
+        return s;
+      });
+
+      return [...newSub];
+    },
   },
 });
 
-export const { addSub, setSubs, deleteSubs } = subscriptionSlice.actions;
+export const { addSub, setSubs, deleteSubs, updateSubs } =
+  subscriptionSlice.actions;
 export default subscriptionSlice.reducer;

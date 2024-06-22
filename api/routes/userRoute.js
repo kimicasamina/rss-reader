@@ -9,6 +9,7 @@ import {
   updateCategory,
   getAllSubs,
   addSub,
+  getAllLatestSubs,
 } from "../controller/userController.js";
 import verifyToken from "../middleware/verifyToken.js";
 
@@ -21,4 +22,5 @@ router.put("/:id/updatecategory", updateCategory);
 
 router.get("/:id/subs", getAllSubs);
 router.put("/:id/addsub", addSub);
+router.put("/:id/latestsubs", getAllLatestSubs);
 export default router;

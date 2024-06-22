@@ -25,6 +25,7 @@ export default function RootLayout() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("USE EFFECT FETCT SUBS:");
     async function fetchData() {
       if (user) {
         try {
@@ -39,7 +40,7 @@ export default function RootLayout() {
       }
     }
     fetchData();
-  }, []);
+  }, [user]);
 
   return (
     <div className="flex-col tablet:flex-row flex w-full max-w-screen-desktop mx-auto h-screen relative ">
