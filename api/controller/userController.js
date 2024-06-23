@@ -180,7 +180,7 @@ export const addSub = async (req, res, next) => {
 
   try {
     const existingSub = await subscriptionModel.findOne({
-      feed: { feedUrl: rss_url },
+      title: feed.title,
     });
 
     if (existingSub) {
@@ -219,48 +219,29 @@ export const getAllLatestSubs = async (req, res, next) => {
   let parser = new Parser();
   let latestSubs = [];
 
-  const parseRSS = async (url) => {
-    let feed = await parser.parseURL(url);
-    console.log("FEED:", feed);
-    // let latestSub;
-    return feed;
-  };
-
   try {
     const existingSub = await subscriptionModel.find({ user: userId });
-    console.log("EXISTING SUBS:", existingSub);
+    // console.log("EXISTING SUBS:", existingSub);
 
-    const fetchFeed = () => {
-      existingSub.forEach((sub) => {
-        let url = sub.feed.feedUrl;
-        console.log("URL:", sub.feed.feedUrl);
-        let feed = parseRSS(url);
-        console.log("FEED:", feed);
-
-        if (feed) {
-          latestSubs.push({
-            ...sub,
-            feed: feed,
-          });
-        }
-      });
-    };
-
-    const updateFeed = () => {
-      latestSubs.forEach((sub) => {
-        console.log("UPDATE MODEL");
-        const updatedSub = subscriptionModel.findOneAndUpdate({
+    for await (const sub of existingSub) {
+      console.log("SUB:", sub);
+      let feed = await parser.parseURL(sub.feedUrl);
+      console.log("FEED:", feed);
+      const updatedFeed = await subscriptionModel.findOneAndUpdate(
+        {
           _id: sub._id,
-        });
-      });
-    };
-    fetchFeed();
-    updateFeed();
+        },
+        {
+          feed: feed,
+        }
+      );
+    }
 
-    const allUpdates = await subscriptionModel.find({});
+    const latestFeed = await subscriptionModel.findOne({ user: userId });
+
     return res
       .status(201)
-      .json({ status: "ok", message: "Success", allUpdates });
+      .json({ status: "ok", message: "Success", latestFeed });
   } catch (err) {
     console.log("ERR:", err);
   }
