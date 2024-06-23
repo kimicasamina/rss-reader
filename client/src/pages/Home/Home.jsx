@@ -24,7 +24,7 @@ const formatFeed = (arr) => {
     let items = arr[j].feed.items;
     // console.log("items:", items?.length);
     for (let k = 0; k < items?.length; k++) {
-      console.log("item:", items[k]);
+      // console.log("item:", items[k]);
       let newItem = {
         feed_title: arr[j].feed.title,
         feed_link: arr[j].feed.link,
@@ -43,24 +43,6 @@ export default function Home() {
   const { user } = useAuth();
   const subs = useSelector((state) => state.subscription);
   const feed = formatFeed(subs);
-
-  // useEffect(() => {
-  //   console.log("USE EFFECT FETCT SUBS:");
-  //   async function fetchData() {
-  //     if (user) {
-  //       try {
-  //         const { data } = await axios.get(`/api/user/${user._id}/subs`);
-  //         console.log("DATA:", data.subs);
-  //         dispatch(setSubs(data.subs));
-  //       } catch (err) {
-  //         console.log(err);
-  //         toast.error(err.response?.data?.message);
-  //         // setError(err.response.data.message);
-  //       }
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
 
   return (
     <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 ">

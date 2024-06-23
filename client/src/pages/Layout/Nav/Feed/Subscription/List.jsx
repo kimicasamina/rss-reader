@@ -1,32 +1,38 @@
-import React, { useEffect } from "react";
-import { FolderIcon } from "../../../../../assets/icons";
+import React, { useEffect, useState } from "react";
+import {
+  FolderIcon,
+  CheckboxBlankIcon,
+  CheckboxLineIcon,
+} from "../../../../../assets/icons";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../../../context/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { setSubs } from "../../../../../redux/reducers/subscription";
 import axios from "axios";
-export default function List() {
+
+export default function List({ toggleEdit, selectedIds, setSelectedIds }) {
   const { user } = useAuth();
   const dispatch = useDispatch();
   const subscription = useSelector((state) => state.subscription);
-  console.log("SUBS:", subscription);
+  const [selected, setSelected] = useState({
+    checked: false,
+    value: null,
+  });
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     if (user) {
-  //       try {
-  //         const { data } = await axios.get(`/api/user/${user._id}/subs`);
-  //         console.log("DATA:", data.subs);
-  //         dispatch(setSubs(data.subs));
-  //       } catch (err) {
-  //         console.log(err);
-  //         toast.error(err.response?.data?.message);
-  //         // setError(err.response.data.message);
-  //       }
-  //     }
-  //   }
-  //   fetchData();
-  // }, [user]);
+  const checkboxHandler = (e) => {
+    setSelected({
+      checked: e.target.checked,
+      value: e.target.value,
+    });
+  };
+
+  useEffect(() => {
+    if (selected.checked) {
+      setSelectedIds([...selectedIds, selected.value]);
+    } else {
+      setSelectedIds(selectedIds.filter((id) => id !== selected.value));
+    }
+  }, [selected]);
 
   return (
     <div className="flex-1 flex flex-col ">
@@ -45,20 +51,21 @@ export default function List() {
                   }
                   key={index}
                 >
-                  {" "}
-                  {sub?.feed?.image?.url ? (
-                    <img src={sub.feed.image.url} alt="" className="w-5 h-5" />
+                  {toggleEdit ? (
+                    <input
+                      type="checkbox"
+                      value={sub._id}
+                      checked={selectedIds.includes(sub._id)}
+                      onChange={(e) => checkboxHandler(e)}
+                    />
                   ) : null}
-                  <p className="group group-hover:text-gray-50 group-hover:ease-in-out group-hover:duration-200 ">
-                    {sub?.feed?.title}
-                  </p>
+                  <img src={sub?.feed?.image?.url} alt="" className="w-5 h-5" />
+                  <p className="">{sub?.feed?.title}</p>
                 </Link>
               );
             })
           : null}
       </div>
-      {/* <div className="h-full scrollBar overflow-y-scroll ">
-      </div> */}
     </div>
   );
 }

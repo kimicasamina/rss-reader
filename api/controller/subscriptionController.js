@@ -88,7 +88,7 @@ export const deleteSub = async (req, res, next) => {
     const existingSub = await subscriptionModel.findByIdAndDelete(id);
     return res
       .status(201)
-      .json({ status: ok, message: "Subscription deleted." });
+      .json({ status: "ok", message: "Subscription deleted." });
   } catch (err) {
     console.log(err);
   }

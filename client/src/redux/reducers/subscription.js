@@ -49,8 +49,11 @@ const subscriptionSlice = createSlice({
     addSub(state, action) {
       return [...state, action.payload];
     },
-    deleteSubs(state, action) {
-      return null;
+    deleteSub(state, action) {
+      const subCopy = [...state];
+      console.log("REDUCER payload", action.payload);
+      const newSub = subCopy.filter((sub) => sub._id !== action.payload);
+      return [...newSub];
     },
     updateSubs(state, action) {
       const subCopy = [...state];
@@ -67,6 +70,6 @@ const subscriptionSlice = createSlice({
   },
 });
 
-export const { addSub, setSubs, deleteSubs, updateSubs } =
+export const { addSub, setSubs, deleteSub, updateSubs } =
   subscriptionSlice.actions;
 export default subscriptionSlice.reducer;

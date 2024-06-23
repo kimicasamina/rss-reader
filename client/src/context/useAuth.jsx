@@ -3,7 +3,7 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { deleteSubs, setSubs } from "../redux/reducers/subscription";
+import { deleteSub, setSubs } from "../redux/reducers/subscription";
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {

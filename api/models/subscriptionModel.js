@@ -9,8 +9,8 @@ const subscriptionSchema = new mongoose.Schema({
     type: String,
   },
   user: {
-    type: mongoose.Types.ObjectId,
-    ref: "user",
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
   },
 });
 
