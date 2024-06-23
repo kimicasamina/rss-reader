@@ -1,16 +1,7 @@
 import React from "react";
-<<<<<<< HEAD
-
-// icons
-import { UserIcon } from "../../../../assets/icons";
-
-// auth
-import { useAuth } from "../../../../context/useAuth";
-=======
 import { useAuth } from "../../../../context/useAuth";
 import { UserIcon } from "../../../../assets/icons";
 import { LoginIcon, LogoutIcon } from "../../../../assets/icons";
->>>>>>> deletefeed
 
 export default function User() {
   const { user } = useAuth();

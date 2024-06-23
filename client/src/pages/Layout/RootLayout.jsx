@@ -5,11 +5,6 @@ import { Outlet } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 // components
-<<<<<<< HEAD
-import Sidebar from "./Nav/Sidebar/Sidebar";
-import MobileNav from "./Nav/Mobile/MobileNav";
-=======
->>>>>>> deletefeed
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
 import MobileNav from "./Nav/Mobile/MobileNav";

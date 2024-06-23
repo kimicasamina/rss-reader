@@ -180,7 +180,8 @@ export const addSub = async (req, res, next) => {
 
   try {
     const existingSub = await subscriptionModel.findOne({
-      title: feed.title,
+      feedUrl: rss_url,
+      user: id,
     });
 
     if (existingSub) {

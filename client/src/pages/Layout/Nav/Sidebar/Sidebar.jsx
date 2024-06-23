@@ -1,10 +1,6 @@
 import React from "react";
 
 import { UserIcon, MenuIcon, RssIcon } from "../../../../assets/icons";
-<<<<<<< HEAD
-
-=======
->>>>>>> deletefeed
 import Menu from "../Menu/Menu";
 import Feed from "../Feed/Feed";
 

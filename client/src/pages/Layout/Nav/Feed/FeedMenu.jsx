@@ -1,13 +1,8 @@
 import React from "react";
-<<<<<<< HEAD
-// icons
-import { AddIcon, SearchIcon } from "../../../../assets/icons";
-=======
 
 import { AddIcon, SearchIcon } from "../../../../assets/icons";
 import { useDispatch } from "react-redux";
 import { setModal } from "../../../../redux/reducers/ui";
->>>>>>> deletefeed
 
 export default function FeedMenu() {
   const dispatch = useDispatch();

@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-// icon
-import { AddFolderIcon, EditIcon } from "../../../../assets/icons";
-
-// components
-import FeedMenu from "./FeedMenu";
-import List from "./Subscription/List";
-
-export default function Feed() {
-  return (
-    <div className="relative h-full flex flex-col bg-transparent">
-      <FeedMenu />
-      <List />
-      <div className="flex justify-self-end justify-between ">
-=======
 import React, { useState } from "react";
 
 import { AddFolderIcon, EditIcon } from "../../../../assets/icons";
@@ -89,19 +72,11 @@ export default function Feed() {
         setSelectedIds={setSelectedIds}
       />
       <div className="flex justify-self-center justify-between pt-2">
->>>>>>> deletefeed
         <AddFolderIcon
           className={
             "cursor-pointer hover:text-secondary hover:ease-in-out group-hover:duration-200 h-5 "
           }
         />
-<<<<<<< HEAD
-        <EditIcon
-          className={
-            "cursor-pointer hover:text-secondary hover:ease-in-out group-hover:duration-200 h-5 "
-          }
-        />
-=======
         <button className="" onClick={(e) => handleToggleEdit(e)}>
           <EditIcon
             className={
@@ -109,7 +84,6 @@ export default function Feed() {
             }
           />
         </button>
->>>>>>> deletefeed
       </div>
     </div>
   );
