@@ -1,117 +1,68 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+// icons
 import { AddIcon } from "../../assets/icons";
-import { Discount, people03, robot, Send } from "../../assets/images";
 
-const articles = [
-  {
-    id: crypto.randomUUID(),
-    createdAt: new Date(),
-    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas.",
-    body: `Qui error ut aut. Et at non quisquam quae cum itaque. Ipsum rerum sed cumque ea possimus. Ut eum commodi rerum eos voluptatum impedit quae quisquam voluptas. Laborum veritatis aut consequatur saepe esse ut delectus. Corporis eos aliquam hic quia.
+// library
+import axios from "axios";
+// redux
+import { useSelector } from "react-redux";
+// rrd
+import { useParams } from "react-router-dom";
+// components
+import Post from "../Feed/Post";
+import { useAuth } from "../../context/useAuth";
 
-    Reiciendis dolorum perspiciatis nisi magnam corrupti sequi. Ab fugit totam autem et. Occaecati voluptatum omnis voluptatum praesentium ipsum.
-    
-    Fuga exercitationem itaque voluptas qui reiciendis quisquam sunt exercitationem. Expedita iure molestiae rem voluptatem exercitationem amet. Atque impedit natus amet magni in.`,
-    category: "Tech",
-    subscription: {
-      id: crypto.randomUUID(),
-      name: "TechCrunch",
-      imgSrc: Discount,
-      createdAt: new Date(),
-      category: "Tech",
-    },
-  },
-  {
-    id: crypto.randomUUID(),
-    createdAt: new Date(),
-    title:
-      "Hic a consequatur commodi et. Excepturi qui repellat voluptatem vel et voluptas.",
-    body: `Qui error ut aut. Et at non quisquam quae cum itaque. Ipsum rerum sed cumque ea possimus. Ut eum commodi rerum eos voluptatum impedit quae quisquam voluptas. Laborum veritatis aut consequatur saepe esse ut delectus. Corporis eos aliquam hic quia.
+const sortFeed = (feed) => {
+  return feed
+    .sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate))
+    .slice(0, 300);
+};
 
-    Reiciendis dolorum perspiciatis nisi magnam corrupti sequi. Ab fugit totam autem et. Occaecati voluptatum omnis voluptatum praesentium ipsum.
-    
-    Fuga exercitationem itaque voluptas qui reiciendis quisquam sunt exercitationem. Expedita iure molestiae rem voluptatem exercitationem amet. Atque impedit natus amet magni in.`,
-    category: "Tech",
-    subscription: {
-      id: crypto.randomUUID(),
-      name: "TechCrunch",
-      imgSrc: people03,
-      createdAt: new Date(),
-      category: "Tech",
-    },
-  },
-  {
-    id: crypto.randomUUID(),
-    createdAt: new Date(),
-    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas.",
-    body: `Qui error ut aut. Et at non quisquam quae cum itaque. Ipsum rerum sed cumque ea possimus. Ut eum commodi rerum eos voluptatum impedit quae quisquam voluptas. Laborum veritatis aut consequatur saepe esse ut delectus. Corporis eos aliquam hic quia.
+const formatFeed = (arr) => {
+  let list = [];
+  for (let j = 0; j < arr.length; j++) {
+    let items = arr[j].feed.items;
+    // console.log("items:", items?.length);
+    for (let k = 0; k < items?.length; k++) {
+      // console.log("item:", items[k]);
+      let newItem = {
+        feed_title: arr[j].feed.title,
+        feed_link: arr[j].feed.link,
+        feed_image: arr[j].feed?.image?.url,
+        ...items[k],
+      };
+      list.push(newItem);
+    }
+  }
+  const sortedFeed = sortFeed(list);
+  return sortedFeed;
+};
 
-    Reiciendis dolorum perspiciatis nisi magnam corrupti sequi. Ab fugit totam autem et. Occaecati voluptatum omnis voluptatum praesentium ipsum.
-    
-    Fuga exercitationem itaque voluptas qui reiciendis quisquam sunt exercitationem. Expedita iure molestiae rem voluptatem exercitationem amet. Atque impedit natus amet magni in.`,
-
-    category: "Economy",
-    subscription: {
-      id: crypto.randomUUID(),
-      name: "The Economist",
-      imgSrc: robot,
-      createdAt: new Date(),
-      category: "Tech",
-    },
-  },
-  {
-    id: crypto.randomUUID(),
-    createdAt: new Date(),
-    title:
-      "Hic a consequatur commodi et. Excepturi qui repellat voluptatem vel et voluptas.",
-    body: `Qui error ut aut. Et at non quisquam quae cum itaque. Ipsum rerum sed cumque ea possimus. Ut eum commodi rerum eos voluptatum impedit quae quisquam voluptas. Laborum veritatis aut consequatur saepe esse ut delectus. Corporis eos aliquam hic quia.
-
-    Reiciendis dolorum perspiciatis nisi magnam corrupti sequi. Ab fugit totam autem et. Occaecati voluptatum omnis voluptatum praesentium ipsum.
-    
-    Fuga exercitationem itaque voluptas qui reiciendis quisquam sunt exercitationem. Expedita iure molestiae rem voluptatem exercitationem amet. Atque impedit natus amet magni in.`,
-    imgSrc: Send,
-    category: "Tech",
-    subscription: {
-      id: crypto.randomUUID(),
-      name: "5 minutes physics",
-      imgSrc: Send,
-      createdAt: new Date(),
-      category: "Science",
-    },
-  },
-];
-
-import { RestartIcon } from "../../assets/icons";
-import Article from "../../components/Article/Article";
-import useFetch from "../../hooks/useFetch";
 export default function Home() {
-  const [data, isLoading, error] = useFetch(`https://news.ycombinator.com/rss`);
-  console.log(data);
-  console.log("articles", articles);
-  return (
-    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen pt-14 px-4 tablet:mt-0 tablet:px-8 tablet:pt-0 ">
-      <div className="flex w-full justify-between items-center my-4">
-        <div className="flex flex-col gap-y-2">
-          <div className="flex items-center gap-x-2">
-            <h1 className="text-black ">Home</h1>
-            <RestartIcon className={``} />
-          </div>
-          <p className="text-sm w-full opacity-70">Latest from your feeds.</p>
-        </div>
-        <button className="btn text-base bg-gray-80 text-tertiary flex items-center justify-evenly px-2 hover:bg-gray-50 hover:text-gray-80 shadow-md ">
-          <AddIcon className={`h-5`} />
-          New Feed
-        </button>
-      </div>
+  const { id } = useParams();
+  const { user } = useAuth();
+  const subs = useSelector((state) => state.subscription);
+  const feed = formatFeed(subs);
 
+  return (
+    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 ">
       <div
-        className="h-full scrollBar overflow-y-scroll grid desktop:grid-cols-2 desktop:gap-x-8"
+        className="h-full scrollBar overflow-y-scroll flex flex-col gap-y-10 pt-[calc(72px+88px)] tablet:pt-[calc(48px+60px)]"
         style={{ scrollbarWidth: "none" }}
       >
-        {articles.map((article) => {
-          return <Article article={article} key={article.id} />;
-        })}
+        {user && subs && feed
+          ? feed.map((item, i) => {
+              return (
+                <Post
+                  post={item}
+                  imgUrl={item.feed_image}
+                  link={item.feed_link}
+                  feedTitle={item.feed_title}
+                  key={i}
+                />
+              );
+            })
+          : null}
       </div>
     </div>
   );

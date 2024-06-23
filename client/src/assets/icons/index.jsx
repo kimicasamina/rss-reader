@@ -254,8 +254,8 @@ const RestartIcon = ({ fill, className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      fill={fill || "white"}
-      className={className || "size-6"}
+      fill={fill || "transparent"}
+      className={`${className} size-6`}
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
@@ -411,7 +411,74 @@ const RssIcon = ({ fill, className }) => {
   );
 };
 
+const AdjustmentIcon = ({ fill, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      fill={fill || "none"}
+      className={className || "size-6"}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+      />
+    </svg>
+  );
+};
+
+const TrashIcon = ({ fill, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      fill={fill || "none"}
+      className={className || "size-6"}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+      />
+    </svg>
+  );
+};
+
+const CheckboxBlankIcon = ({ fill, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      className={`${className}`}
+      fill={`${fill} currentColor`}
+    >
+      <path d="M4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM5 5V19H19V5H5Z"></path>
+    </svg>
+  );
+};
+
+const CheckboxLineIcon = ({ fill, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      className={`${className}`}
+      fill={`${fill}`}
+    >
+      <path d="M4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM5 5V19H19V5H5ZM11.0026 16L6.75999 11.7574L8.17421 10.3431L11.0026 13.1716L16.6595 7.51472L18.0737 8.92893L11.0026 16Z"></path>
+    </svg>
+  );
+};
+
 export {
+  CheckboxBlankIcon,
+  CheckboxLineIcon,
+  TrashIcon,
   HomeIcon,
   MenuIcon,
   EditIcon,
@@ -433,4 +500,5 @@ export {
   EyeSlashIcon,
   XMarkIcon,
   RssIcon,
+  AdjustmentIcon,
 };

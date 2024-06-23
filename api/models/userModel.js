@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema({
   },
   subscription: [
     {
-      type: mongoose.Types.ObjectId,
-      ref: "subscription",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "subscriptions",
     },
   ],
   category: [String],

@@ -41,7 +41,7 @@
   h1,
   h2,
   h3 {
-    line-height: 1.75;
+    line-height: 1.5;
     @apply text-secondary font-semibold;
   }
   h1 {
@@ -54,7 +54,7 @@
 
   p {
     line-height: 1.5;
-    @apply text-base text-gray-80;
+    @apply text-sm tablet:text-lg text-gray-80;
   }
 
   .btn {
@@ -87,5 +87,34 @@
 
   .absolute-center {
     @apply top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+  .bounceAnimation {
+    animation: bounce infinite 1000ms ease-in-out;
+    transition: animation 1000ms;
+    /* animation-name: bounce;
+    animation-duration: 2000ms;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  }
+
+  .animation-delay-0 {
+    animation-delay: 0ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 400ms;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
   }
 }

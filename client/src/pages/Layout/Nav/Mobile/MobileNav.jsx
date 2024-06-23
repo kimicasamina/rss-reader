@@ -1,6 +1,9 @@
 import React from "react";
 
+<<<<<<< HEAD
 // icons
+=======
+>>>>>>> deletefeed
 import { UserIcon, MenuIcon, RssIcon } from "../../../../assets/icons";
 
 // components
