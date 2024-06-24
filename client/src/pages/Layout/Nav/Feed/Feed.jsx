@@ -19,6 +19,7 @@ export default function Feed() {
   const subs = useSelector((state) => state.subscription);
   const [toggleEdit, setToggleEdit] = useState(false);
   const [selectedIds, setSelectedIds] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
   const dispatch = useDispatch();
 
   const handleToggleEdit = (e) => {
@@ -55,7 +56,7 @@ export default function Feed() {
 
   return (
     <div className="relative w-full h-full flex flex-col bg-transparent">
-      <FeedMenu />
+      <FeedMenu setSearchKeyword={setSearchKeyword} />
       <div className="flex justify-start items-center pb-2">
         {toggleEdit ? (
           <button
@@ -70,6 +71,7 @@ export default function Feed() {
         toggleEdit={toggleEdit}
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
+        searchKeyword={searchKeyword}
       />
       <div className="flex justify-self-center justify-between pt-2">
         <AddFolderIcon

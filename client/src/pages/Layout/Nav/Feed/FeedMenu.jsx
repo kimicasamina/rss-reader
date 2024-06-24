@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { AddIcon, SearchIcon } from "../../../../assets/icons";
 import { useDispatch } from "react-redux";
 import { setModal } from "../../../../redux/reducers/ui";
 
-export default function FeedMenu() {
+export default function FeedMenu({ setSearchKeyword }) {
   const dispatch = useDispatch();
 
   const handleAddSub = () => {
     console.log("add sub");
     dispatch(setModal({ isVisible: true, content: "addsub" }));
   };
+
   return (
     <>
       <div className="flex justify-between items-center mb-2">
@@ -33,6 +34,7 @@ export default function FeedMenu() {
             type="text"
             className="bg-transparent outline-none w-full "
             placeholder="Search feeds"
+            onChange={(e) => setSearchKeyword(e.target.value)}
           />
         </div>
       </div>
