@@ -21,13 +21,12 @@ import Loading from "../Spinner/Loading";
 export default function Post() {
   const [input, setInput] = useState({
     rssUrl: "",
-    category: null,
+    category: "",
   });
   const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(null);
 
   const dispatch = useDispatch();
-  const category = ["Tech", "Finance", "Entertainment", "Gaming", "Business"];
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +84,7 @@ export default function Post() {
           />
         </div>
 
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <label htmlFor="">Category</label>
           <select
             name="category"
@@ -102,7 +101,7 @@ export default function Post() {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         <button
           type="submit "
