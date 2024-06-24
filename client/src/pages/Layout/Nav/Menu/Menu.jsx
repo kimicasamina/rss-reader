@@ -64,7 +64,10 @@ export default function Menu({ menuHidden }) {
       </div>
       <div className="flex items-center gap-x-2 py-1 cursor-pointer hover-bg-menu group ">
         {user ? (
-          <button className="w-full flex gap-x-2" onClick={logoutUser}>
+          <button
+            className="w-full items-center flex gap-x-2"
+            onClick={logoutUser}
+          >
             <LogoutIcon
               className={
                 "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "
@@ -76,7 +79,7 @@ export default function Menu({ menuHidden }) {
           </button>
         ) : (
           <button
-            className="w-full flex gap-x-2 "
+            className="w-full items-center flex gap-x-2 "
             onClick={(e) =>
               dispatch(setModal({ isVisible: true, content: "login" }))
             }

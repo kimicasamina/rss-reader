@@ -19,7 +19,7 @@ export function AuthContextProvider({ children }) {
       const { data } = await axios.delete("/api/user/logout");
       console.log(data);
       setUser(null);
-      dispatch(setSubs(null));
+      dispatch(setSubs([]));
       // dispatch(deleteSubs());
       toast.success(data.message);
     } catch (err) {

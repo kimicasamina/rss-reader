@@ -32,7 +32,10 @@ export default function Feed() {
 
   return (
     <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 ">
-      <PageHeader title={sub.feed.title} setSearchKeyword={setSearchKeyword} />
+      <PageHeader
+        title={sub?.feed?.title}
+        setSearchKeyword={setSearchKeyword}
+      />
       <div
         className="h-full scrollBar overflow-y-scroll flex flex-col gap-y-10 pt-[calc(72px+88px)] tablet:pt-[calc(48px+60px)]"
         style={{ scrollbarWidth: "none" }}
