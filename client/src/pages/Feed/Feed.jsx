@@ -15,7 +15,7 @@ export default function Feed() {
   console.log("ITEM:", searchItem);
 
   useEffect(() => {
-    console.log("ITEMS:", sub.feed.items);
+    console.log("ITEMS:", sub?.feed?.items);
     if (searchKeyword !== "") {
       const items = sub.feed.items.filter((item) => {
         const subTitle = item.title.toLowerCase();
