@@ -46,7 +46,7 @@ export default function RootLayout() {
     <div className="flex-col tablet:flex-row flex w-full max-w-screen-desktop mx-auto h-screen relative ">
       {uiModal.isVisible ? (
         <div
-          className="w-full h-full absolute flex tablet:place-center bg-tertiary/100 z-20"
+          className="w-full h-full absolute flex tablet:place-center bg-gray-5/100 z-20"
           onClick={() => dispatch(closeModal())}
         >
           {uiModal.content === "login" ? <Login /> : null}

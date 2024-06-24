@@ -63,7 +63,7 @@ export default function Feed() {
             className=" bg-primary/50 w-full p-1"
             onClick={(e) => handleDelete(e)}
           >
-            <TrashIcon className={"w-5 h-5"} />
+            <TrashIcon className={"w-5 h-5 text-neutral-5"} />
           </button>
         ) : null}
       </div>
@@ -76,13 +76,13 @@ export default function Feed() {
       <div className="flex justify-self-center justify-between pt-2">
         <AddFolderIcon
           className={
-            "cursor-pointer hover:text-secondary hover:ease-in-out group-hover:duration-200 h-5 "
+            "cursor-pointer hover:text-neutral-20 hover:ease-in-out group-hover:duration-200 h-5 text-neutral-5"
           }
         />
         <button className="" onClick={(e) => handleToggleEdit(e)}>
           <EditIcon
             className={
-              "cursor-pointer hover:text-secondary hover:ease-in-out group-hover:duration-200 h-5 "
+              "cursor-pointer hover:text-neutral-20 hover:ease-in-out group-hover:duration-200 h-5 text-neutral-5"
             }
           />
         </button>

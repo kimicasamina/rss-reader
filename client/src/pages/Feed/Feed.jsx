@@ -31,7 +31,7 @@ export default function Feed() {
   }, [searchKeyword]);
 
   return (
-    <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 ">
+    <div className="flex-1 flex flex-col bg-white w-full h-screen px-4 tablet:px-8 ">
       <PageHeader
         title={sub?.feed?.title}
         setSearchKeyword={setSearchKeyword}

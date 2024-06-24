@@ -59,7 +59,7 @@ export default function Post() {
 
   return (
     <div
-      className="bg-white p-8 rounded-md tablet:shadow-lg shadow-gray-80 flex flex-col gap-y-8 w-full tablet:max-w-screen-tablet z-20 relative"
+      className="bg-white p-8 rounded-md tablet:shadow-lg shadow-gray-20 flex flex-col gap-y-8 w-full tablet:max-w-screen-tablet z-20 relative"
       onClick={(e) => e.stopPropagation()}
     >
       <button
@@ -105,7 +105,7 @@ export default function Post() {
 
         <button
           type="submit "
-          className="mt-4 w-full tablet:btn btn bg-primary text-tertiary self-center"
+          className="mt-4 w-full tablet:btn btn self-center bg-gray-20 text-white hover:bg-gray-5"
         >
           Add Feed
         </button>

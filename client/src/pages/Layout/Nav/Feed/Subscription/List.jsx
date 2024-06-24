@@ -105,7 +105,7 @@ export default function List({
                     />
                   ) : null}
                   <img src={sub?.feed?.image?.url} alt="" className="w-5 h-5" />
-                  <p className="">{sub?.feed?.title}</p>
+                  <p className="text-neutral-20">{sub?.feed?.title}</p>
                 </Link>
               );
             })}

@@ -12,18 +12,15 @@
 
 @layer base {
   :root {
-    margin: 0;
-    padding: 0;
-    --transparent: #00000000;
-    --primary: #ff5454;
-    --secondary: #333333;
-    --tertiary: #291f1f;
-    --black: #000000;
-    --white: #ffffff;
-    --gray-80: #333333;
-    --gray-50: #7e7e7e;
-    --gray-20: #c7c7c7;
-    --gray-5: #ececec;
+    --transparent: 0deg 0% 0% 0;
+    --primary: 0deg 100% 66%;
+    --gray-20: 242deg 23% 25%;
+    --gray-5: 231deg 37% 14%;
+    --black: 0deg 0% 0%;
+    /* --white: 0deg, 0%, 100%; */
+    --white: 0deg 0% 100%;
+    --neutral-20: 219deg 11% 74%;
+    --neutral-5: 38deg 27% 92%;
   }
 
   body {
@@ -42,19 +39,23 @@
   h2,
   h3 {
     line-height: 1.5;
-    @apply text-secondary font-semibold;
+    @apply text-gray-20 font-semibold;
   }
   h1 {
-    @apply text-xl tablet:text-2xl text-gray-80;
+    @apply text-xl tablet:text-2xl text-primary;
   }
 
   h2 {
-    @apply text-lg tablet:text-xl text-gray-80;
+    @apply text-lg tablet:text-xl;
   }
 
   p {
     line-height: 1.5;
-    @apply text-sm tablet:text-lg text-gray-80;
+    @apply text-sm tablet:text-lg text-gray-20;
+  }
+
+  a {
+    @apply text-sm tablet:text-lg text-neutral-20 hover:text-primary;
   }
 
   .btn {
@@ -65,17 +66,19 @@
   }
 }
 
+/* @layer components {
+  button {
+    @apply bg-gray-20 text-white hover:bg-gray-5;
+  }
+} */
+
 @layer utilities {
   .place-center {
     @apply flex justify-center items-center;
   }
 
-  /* .bg-brand-gradient {
-    background-image: linear-gradient(#3490dc, #6574cd);
-  } */
-
   .bg-brand-gradient {
-    background-image: linear-gradient(var(--secondary), var(--tertiary));
+    background-image: linear-gradient(var(--gray-20), var(--gray-5));
   }
   .hover-bg-menu {
     @apply hover:bg-gray-5 rounded-md px-1;

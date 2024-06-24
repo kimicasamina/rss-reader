@@ -47,8 +47,8 @@ export default function PageHeader({ title, setSearchKeyword }) {
   };
 
   return (
-    <div className="flex w-full flex-col tablet:flex-row items-start justify-between tablet:items-center gap-y-1 py-2 absolute bg-tertiary/50 backdrop-blur-lg left-0 right-0 top-12 tablet:top-0 px-4 tablet:px-8">
-      <div className="flex flex-row gap-y-2">
+    <div className="flex w-full flex-col tablet:flex-row items-start justify-between tablet:items-center gap-y-1 py-2 absolute bg-white/50 backdrop-blur-md left-0 right-0 top-12 tablet:top-0 px-4 tablet:px-8">
+      <div className="flex w-full flex-row gap-y-2">
         <div className="flex flex-wrap items-center gap-x-2">
           <h2 className="text-black ">{title}</h2>
           <button className="" onClick={(e) => handleFetchLatest(e)}>
@@ -62,14 +62,14 @@ export default function PageHeader({ title, setSearchKeyword }) {
               <RestartIcon className={"cursor-pointer hover:text-secondary"} />
             )}
           </button>
-          <p className="text-sm tablet:text-base w-full opacity-70 ">
+          <p className="text-sm tablet:text-base text-gray-20 w-full opacity-70 ">
             Latest from your feeds.
           </p>
         </div>
       </div>
-      <div className="flex w-full items-center gap-x-4 relative tablet:justify-end">
+      <div className="flex w-full items-center gap-x-4 relative tablet:justify-end ">
         {toggleSearch ? (
-          <div className="flex gap-x-2 w-full absolute bg-tertiary rounded-full py-1 tablet:p-2 shadow-sm">
+          <div className="flex gap-x-2 w-full absolute bg-tertiary rounded-full py-1 tablet:py-2 shadow-md bg-white ">
             <button
               className="flex items-center gap-x-2 cursor-pointer rounded-full"
               onClick={(e) => {
@@ -77,11 +77,11 @@ export default function PageHeader({ title, setSearchKeyword }) {
                 setToggleSearch(!toggleSearch);
               }}
             >
-              <XMarkIcon className={`w-6 h-6 rounded-full`} />
+              <XMarkIcon className={`w-6 h-6 rounded-full mx-2`} />
             </button>
             <input
               type="text"
-              className="w-full flex-1 bg-tertiary px-2 rounded-lg focus:outline-none focus-visible:outline-none"
+              className="w-full flex-1 bg-tertiary px-2 rounded-lg focus:outline-none focus-visible:outline-none "
               placeholder="Search post..."
               onChange={(e) => setSearchKeyword(e.target.value)}
             />

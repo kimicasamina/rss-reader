@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // icons
 import { SettingsIcon } from "../../../../assets/icons";
@@ -16,53 +16,55 @@ export default function Menu({ menuHidden }) {
   const { user, logoutUser } = useAuth();
   const uiModal = useSelector((state) => state.ui.modal);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const path = location.pathname;
 
   return (
     <div className={`${menuHidden ? "hidden" : "flex"} flex-col mb-8`}>
       <Link
         to="/"
-        className="flex items-center gap-x-2 py-1 cursor-pointer hover-bg-menu group"
+        className={`flex items-center gap-x-2 py-1 cursor-pointer hover-bg-primary group `}
       >
         <HomeIcon
-          className={
-            "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "
-          }
+          className={`group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 text-neutral-5 ${path === "/" ? "text-primary" : ""}`}
         />
-        <p className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200">
+        <a
+          className={`group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 ${path === "/" ? "text-primary" : ""}`}
+        >
           Home
-        </p>
+        </a>
       </Link>
-      <div className="flex items-center gap-x-2 py-1 cursor-pointer hover-bg-menu group ">
+      <div className="flex items-center gap-x-2 py-1 cursor-pointer group ">
         <BookmarkIcon
           className={
-            "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "
+            "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 text-neutral-5"
           }
         />
-        <p className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200">
+        <a className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 ">
           Favorites
-        </p>
+        </a>
       </div>
-      <div className="flex items-center gap-x-2 py-1 cursor-pointer hover-bg-menu group ">
+      <div className="flex items-center gap-x-2 py-1 cursor-pointer group ">
         <TagIcon
           className={
-            "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "
+            "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 text-neutral-5"
           }
         />
-        <p className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200">
+        <a className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200">
           Tag
-        </p>
+        </a>
       </div>
-      <div className="flex items-center gap-x-2 py-1 cursor-pointer hover-bg-menu group ">
+      <div className="flex items-center gap-x-2 py-1 cursor-pointer group ">
         <SettingsIcon
           className={
-            "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "
+            "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 text-neutral-5"
           }
         />
-        <p className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 ">
+        <a className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 ">
           Settings
-        </p>
+        </a>
       </div>
-      <div className="flex items-center gap-x-2 py-1 cursor-pointer hover-bg-menu group ">
+      <div className="flex items-center gap-x-2 py-1 cursor-pointer group ">
         {user ? (
           <button
             className="w-full items-center flex gap-x-2"
@@ -70,12 +72,12 @@ export default function Menu({ menuHidden }) {
           >
             <LogoutIcon
               className={
-                "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "
+                "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 text-neutral-5"
               }
             />
-            <p className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 ">
+            <a className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 ">
               Logout
-            </p>
+            </a>
           </button>
         ) : (
           <button
@@ -86,12 +88,12 @@ export default function Menu({ menuHidden }) {
           >
             <LoginIcon
               className={
-                "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 "
+                "group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 h-5 text-neutral-5"
               }
             />
-            <p className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 ">
+            <a className="group-hover:text-primary group-hover:ease-in-out group-hover:duration-200 ">
               Login/Signup
-            </p>
+            </a>
           </button>
         )}
       </div>

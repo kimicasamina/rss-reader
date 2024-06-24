@@ -36,7 +36,7 @@ export default function Login() {
 
   return (
     <div
-      className="bg-white p-8 rounded-md tablet:shadow-lg shadow-gray-80 flex flex-col gap-y-8 w-full tablet:max-w-screen-tablet z-20 "
+      className="bg-white p-8 rounded-md tablet:shadow-lg shadow-gray-20 flex flex-col gap-y-8 w-full tablet:max-w-screen-tablet z-20 "
       onClick={(e) => e.stopPropagation()}
     >
       <button
@@ -73,7 +73,7 @@ export default function Login() {
           <div className="flex flex-col group relative">
             <label
               htmlFor=""
-              className="absolute text-sm -top-2 left-2 bg-tertiary px-2 group-focus-within:text-gray-80"
+              className="absolute text-sm -top-2 left-2 bg-white px-2 group-focus-within:text-gray-900"
             >
               Password
             </label>
@@ -115,13 +115,13 @@ export default function Login() {
             <a className="text-primary">Forgot password</a>
           </Link>
         </div>
-        <button className="btn w-full bg-secondary text-tertiary">Login</button>
+        <button className="btn w-full bg-gray-20 text-white hover:bg-gray-5">
+          Login
+        </button>
       </form>
       <div className="w-full relative">
         <hr className="" />
-        <p className="bg-tertiary px-2 absolute absolute-center">
-          Or login with
-        </p>
+        <p className="bg-white px-2 absolute absolute-center">Or login with</p>
       </div>
 
       <div className="flex flex-wrap justify-center gap-x-4">

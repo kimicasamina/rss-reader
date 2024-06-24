@@ -238,7 +238,10 @@ export default function Signup() {
             )}
           </div>
         </div>
-        <button type="submit" className="btn w-full bg-secondary text-tertiary">
+        <button
+          type="submit"
+          className="btn w-full bg-gray-20 text-white hover:bg-gray-5"
+        >
           Signup
         </button>
       </form>

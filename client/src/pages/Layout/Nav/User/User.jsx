@@ -8,11 +8,13 @@ export default function User() {
   return (
     <>
       {user ? (
-        <div className="flex items-center gap-x-2 mb-2">
+        <div className="flex items-center gap-x-2 mb-2 py-1">
           <UserIcon
-            className={"hover:animation-ease-in-out h-6 cursor-pointer "}
+            className={
+              "hover:animation-ease-in-out h-6 cursor-pointer text-neutral-5"
+            }
           />
-          <h2 className="text-secondary">{user.username}</h2>
+          <h2 className="text-neutral-5">{user.username}</h2>
         </div>
       ) : null}
     </>
