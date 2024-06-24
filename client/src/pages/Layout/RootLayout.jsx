@@ -63,7 +63,6 @@ export default function RootLayout() {
         setDisplayMobileNav={setDisplayMobileNav}
       />
       <main className="flex-1 h-screen relative ">
-        <PageHeader />
         <Outlet />
       </main>
     </div>

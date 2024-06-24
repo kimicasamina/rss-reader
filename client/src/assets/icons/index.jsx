@@ -380,7 +380,7 @@ const XMarkIcon = ({ fill, className }) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      fill={fill || "none"}
+      fill={fill}
       className={className || "size-6"}
     >
       <path
@@ -498,7 +498,7 @@ export {
   TagIcon,
   EyeIcon,
   EyeSlashIcon,
-  XMarkIcon,
   RssIcon,
   AdjustmentIcon,
+  XMarkIcon,
 };

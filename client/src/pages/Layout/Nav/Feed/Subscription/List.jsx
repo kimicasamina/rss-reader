@@ -24,8 +24,6 @@ export default function List({
     checked: false,
     value: null,
   });
-  console.log("SEACHKEYWORD:", searchKeyword);
-  console.log("SEACHITEM:", searchItem);
 
   const checkboxHandler = (e) => {
     setSelected({

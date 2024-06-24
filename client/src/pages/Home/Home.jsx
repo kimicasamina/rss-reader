@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 // components
 import Post from "../Feed/Post";
+import PageHeader from "../Layout/Header/PageHeader";
 import { useAuth } from "../../context/useAuth";
 
 const sortFeed = (feed) => {
@@ -43,9 +44,28 @@ export default function Home() {
   const { user } = useAuth();
   const subs = useSelector((state) => state.subscription);
   const feed = formatFeed(subs);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [searchItem, setSearchItem] = useState([]);
+
+  useEffect(() => {
+    if (searchKeyword !== "") {
+      const item = subs.filter((sub) => {
+        const subTitle = sub.feed.title.toLowerCase();
+        if (subTitle.includes(searchKeyword.toLowerCase())) {
+          return sub;
+        }
+      });
+      setSearchItem(item);
+    }
+
+    return () => {
+      setSearchItem([]);
+    };
+  }, [searchKeyword]);
 
   return (
     <div className="flex-1 flex flex-col bg-gray-5 w-full h-screen px-4 tablet:px-8 ">
+      <PageHeader title={"Home"} setSearchKeyword={setSearchKeyword} />
       <div
         className="h-full scrollBar overflow-y-scroll flex flex-col gap-y-10 pt-[calc(72px+88px)] tablet:pt-[calc(48px+60px)]"
         style={{ scrollbarWidth: "none" }}
