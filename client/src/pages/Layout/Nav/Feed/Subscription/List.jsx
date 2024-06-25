@@ -86,7 +86,10 @@ export default function List({
                 </Link>
               );
             })
-          : subscription.map((sub, index) => {
+          : null}
+
+        {user && searchItem?.length === 0 && subscription.length > 0
+          ? subscription.map((sub, index) => {
               return (
                 <Link
                   to={`/${sub._id}`}
@@ -108,7 +111,8 @@ export default function List({
                   <p className="text-neutral-20">{sub?.feed?.title}</p>
                 </Link>
               );
-            })}
+            })
+          : null}
       </div>
     </div>
   );

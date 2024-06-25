@@ -27,7 +27,7 @@ export const signup = async (req, res, next) => {
     existingUser = await userModel.findOne({ email });
   } catch (error) {
     // return createError(err.status, err.message);
-    return res.status(err.statusCode).json(error.message);
+    return res.status(err.status).json(error.message);
   }
   if (existingUser) {
     // return createError(401, "User already exist! Login Instead");

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 // icons
 import { AddIcon } from "../../assets/icons";
 
@@ -43,16 +43,20 @@ export default function Home() {
   const { id } = useParams();
   const { user } = useAuth();
   const subs = useSelector((state) => state.subscription);
-  const feed = formatFeed(subs);
+  const feed = useMemo(() => {
+    return formatFeed(subs);
+  }, [subs]);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchItem, setSearchItem] = useState([]);
+  console.log("FEEED:", feed);
 
   useEffect(() => {
+    console.log("KEYWORD:", searchKeyword);
     if (searchKeyword !== "") {
-      const item = subs.filter((sub) => {
-        const subTitle = sub.feed.title.toLowerCase();
+      const item = feed.filter((f) => {
+        const subTitle = f.title.toLowerCase();
         if (subTitle.includes(searchKeyword.toLowerCase())) {
-          return sub;
+          return f;
         }
       });
       setSearchItem(item);
@@ -70,7 +74,20 @@ export default function Home() {
         className="h-full scrollBar overflow-y-scroll flex flex-col gap-y-10 pt-[calc(72px+88px)] tablet:pt-[calc(48px+60px)]"
         style={{ scrollbarWidth: "none" }}
       >
-        {user && subs && feed
+        {user && searchItem && searchItem?.length > 0
+          ? searchItem.map((item, i) => {
+              return (
+                <Post
+                  post={item}
+                  imgUrl={item.feed_image}
+                  link={item.feed_link}
+                  feedTitle={item.feed_title}
+                  key={i}
+                />
+              );
+            })
+          : null}
+        {user && searchItem.length === 0 && feed
           ? feed.map((item, i) => {
               return (
                 <Post
