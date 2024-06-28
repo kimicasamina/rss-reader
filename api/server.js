@@ -7,6 +7,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
+import path from "path";
 import jwt from "jsonwebtoken";
 import { ErrorHandler } from "./middleware/errorHandler.js";
 
