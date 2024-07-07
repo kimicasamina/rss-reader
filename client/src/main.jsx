@@ -5,7 +5,7 @@ import "./index.css";
 
 // axios imports and config
 import axios from "axios";
-axios.defaults.baseURL = "https://rssreader.onrender.com/";
+axios.defaults.baseURL = "https://rssreader.onrender.com";
 axios.defaults.withCredentials = true;
 
 // redux
