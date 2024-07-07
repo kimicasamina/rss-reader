@@ -24,6 +24,7 @@ export default function List({
     checked: false,
     value: null,
   });
+  console.log("SUBSCRIPTION:", subscription);
 
   const checkboxHandler = (e) => {
     setSelected({
