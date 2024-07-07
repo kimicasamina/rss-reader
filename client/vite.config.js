@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": "https://rssreader-3zjk.onrender.com",
+      // "/api": "https://rssreader-3zjk.onrender.com",
     },
   },
 });
